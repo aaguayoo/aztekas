@@ -25,52 +25,51 @@
 
 double TIMESTEP()
 {
-	int i, j, k;
-	double dtmin;
-	double c, dt;
-	double r;
+   int i, j, k;
+   double dtmin;
+   double c, dt;
+   double r;
 
-	dtmin = 100000;
+   dtmin = 100000;
 
-	if(dim == 1)
-	{
-		for(i = 3; i <= Nx1-3; i++)
-		{
-			c = sqrt(K*U[c1(1,i)] / (U[c1(0,i)]));
-			dtmin = min(dx1/(fabs(U[c1(2,i)]) + fabs(c)),dtmin);
-		}
-	}
-	else if(dim == 2)
-	{ 
-		for(i = 3; i <= Nx1-3; i++)
-		{
-			for(j = 3; j <= Nx2-3; j++)
-			{
-				c = sqrt(K*U[c2(1,i,j)] / (U[c2(0,i,j)]));
-				dtmin = min(dx1/(fabs(U[c2(2,i,j)]) + fabs(c)),dtmin);
-				dtmin = min(dx2/(fabs(U[c2(3,i,j)]) + fabs(c)),dtmin);
-			}
-		}
-	}
-	else
-	{
-		for(i = 3; i <= Nx1-3; i++)
-		{
-			for(j = 3; j <= Nx2-3; j++)
-			{
-				for(k = 3; k <= Nx3-3; k++)
-				{
-					c = sqrt(K*U[c3(1,i,j,k)] / (U[c3(0,i,j,k)]));
-					dtmin = min(dx1/(fabs(U[c3(2,i,j,k)]) + fabs(c)),dtmin);
-					dtmin = min(dx2/(fabs(U[c3(3,i,j,k)]) + fabs(c)),dtmin);
-					dtmin = min(dx3/(fabs(U[c3(4,i,j,k)]) + fabs(c)),dtmin);
-				}
-			}
-		}
-	}
+   if(dim == 1)
+   {
+      for(i = 3; i <= Nx1-3; i++)
+      {
+         c = sqrt(K*U[c1(1,i)] / (U[c1(0,i)]));
+         dtmin = min(dx1/(fabs(U[c1(2,i)]) + fabs(c)),dtmin);
+      }
+   }
+   else if(dim == 2)
+   { 
+      for(i = 3; i <= Nx1-3; i++)
+      {
+         for(j = 3; j <= Nx2-3; j++)
+         {
+            c = sqrt(K*U[c2(1,i,j)] / (U[c2(0,i,j)]));
+            dtmin = min(dx1/(fabs(U[c2(2,i,j)]) + fabs(c)),dtmin);
+            dtmin = min(dx2/(fabs(U[c2(3,i,j)]) + fabs(c)),dtmin);
+         }
+      }
+   }
+   else
+   {
+      for(i = 3; i <= Nx1-3; i++)
+      {
+         for(j = 3; j <= Nx2-3; j++)
+         {
+            for(k = 3; k <= Nx3-3; k++)
+            {
+               c = sqrt(K*U[c3(1,i,j,k)] / (U[c3(0,i,j,k)]));
+               dtmin = min(dx1/(fabs(U[c3(2,i,j,k)]) + fabs(c)),dtmin);
+               dtmin = min(dx2/(fabs(U[c3(3,i,j,k)]) + fabs(c)),dtmin);
+               dtmin = min(dx3/(fabs(U[c3(4,i,j,k)]) + fabs(c)),dtmin);
+            }
+         }
+      }
+   }
 
-	dt = cou*dtmin;
-	//dt = cou*dx1;
-	//printf("%e \n", c);
-	return dt;
+   dt = cou*dtmin;
+
+   return dt;
 }

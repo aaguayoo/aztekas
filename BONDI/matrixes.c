@@ -29,113 +29,112 @@
 
 int AMATRIX1D(double *u, vec_ *v, int *I)
 {
-	int m, n;
-	int i;
+   int m, n;
+   int i;
 
-	x1  = X1[I[0]];
-	x2  = 0;
-	x3  = 0;
+   x1  = X1[I[0]];
+   x2  = 0;
+   x3  = 0;
 
-	funct_A(v->A,u);
-	funct_S(v->S,u);
+   funct_A(v->A,u);
+   funct_S(v->S,u);
 
-	return 0;
+   return 0;
 }
 
 int AMATRIX2D(double *u, vec_ *v, int *I)
 {
-	int m, n;
+   int m, n;
 
-	x1  = X1[I[0]];
-	x2  = X2[I[1]];
-	x3  = 0;
+   x1  = X1[I[0]];
+   x2  = X2[I[1]];
+   x3  = 0;
 
-	funct_A(v->A,u);
-	funct_S(v->S,u);
+   funct_A(v->A,u);
+   funct_S(v->S,u);
 
-	return 0;
+   return 0;
 }
 
 int AMATRIX3D(double *u, vec_ *v, int *I)
 {
-	int m, n;
+   int m, n;
 
-	x1  = X1[I[0]];
-	x2  = X2[I[1]];
-	x3  = X3[I[2]];
+   x1  = X1[I[0]];
+   x2  = X2[I[1]];
+   x3  = X3[I[2]];
 
-	funct_A(v->A,u);
-	funct_S(v->S,u);
+   funct_A(v->A,u);
+   funct_S(v->S,u);
 
-	return 0;
+   return 0;
 }
 
 ///////////////////////////////////////////////////////////////////////////
 
 int VECTOR(int pm, char flux, lim_ *l, flx_ *f, int *I)
 {
-	int n;
-	double *u, lr, ll;
-	double up[eq+1];
-	double um[eq+1];
+   int n;
+   double *u, lr, ll;
+   double up[eq+1];
+   double um[eq+1];
    double Np, Pp, vx1p=0, vx2p=0, vx3p=0;
    double Nm, Pm, vx1m=0, vx2m=0, vx3m=0;
-	double x1p=0, x2p=0, x3p=0;
-	double x1m=0, x2m=0, x3m=0;
-	double dp[3];
-	double dm[3];
+   double x1p=0, x2p=0, x3p=0;
+   double x1m=0, x2m=0, x3m=0;
+   double dp[3];
+   double dm[3];
 
    if(pm == 1)
    {
-		switch(flux)
-		{
-			case 'f':
-				u = l->ux1p;
-			break;
-			
-			case 'g':
-				u = l->ux2p;
-			break;
-			
-			case 'h':
-				u = l->ux3p;
-			break;
-			
-		}
+      switch(flux)
+      {
+         case 'f':
+            u = l->ux1p;
+         break;
+
+         case 'g':
+            u = l->ux2p;
+         break;
+
+         case 'h':
+            u = l->ux3p;
+         break;
+      }
    }
    else
    {
-		switch(flux)
-		{
-			case 'f':
-				u = l->ux1m;
-			break;
-			
-			case 'g':
-				u = l->ux2m;
-			break;
+      switch(flux)
+      {
+         case 'f':
+            u = l->ux1m;
+         break;
 
-			case 'h':
-				u = l->ux3m;
-			break;
-		}
+         case 'g':
+            u = l->ux2m;
+         break;
+
+         case 'h':
+            u = l->ux3m;
+         break;
+      }
    }
 
-	x1p  = X1p[I[0]];
-	x1m  = X1m[I[0]];
+   x1p  = X1p[I[0]];
+   x1m  = X1m[I[0]];
 
-	if(dim == 2)
-	{
-		x2p  = X2p[I[1]];
-		x2m  = X2m[I[1]];
-	}
-	else if(dim == 3)
-	{
-		x2p  = X2p[I[1]];
-		x3p  = X3p[I[2]];
-		x2m  = X2m[I[1]];
-		x3m  = X3m[I[2]];
-	}
+   if(dim == 2)
+   {
+      x2p  = X2p[I[1]];
+      x2m  = X2m[I[1]];
+   }
+   else if(dim == 3)
+   {
+      x2p  = X2p[I[1]];
+      x3p  = X3p[I[2]];
+      x2m  = X2m[I[1]];
+      x3m  = X3m[I[2]];
+   }
 
    for(n = 0; n < eq; n++)
    {
@@ -143,73 +142,72 @@ int VECTOR(int pm, char flux, lim_ *l, flx_ *f, int *I)
       um[n] = u[0*eq + n];
    }
 
-	x1 = x1p;
-	x2 = x2p;
-	x3 = x3p;
-	funct_Q(f->qp,up);
-	x1 = x1m;
-	x2 = x2m;
-	x3 = x3m;
-	funct_Q(f->qm,um);
-	switch(flux)
-	{
-		case 'f':	
-			x1 = x1p;
-			x2 = x2p;
-			x3 = x3p;
-			funct_F(f->fp,up);
-			funct_Dm(dp,up);
-			x1 = x1m;
-			x2 = x2m;
-			x3 = x3m;
-			funct_F(f->fm,um);
-			funct_Dm(dm,um);
-		break;
+   x1 = x1p;
+   x2 = x2p;
+   x3 = x3p;
+   funct_Q(f->qp,up);
+   x1 = x1m;
+   x2 = x2m;
+   x3 = x3m;
+   funct_Q(f->qm,um);
+   switch(flux)
+   {
+      case 'f':
+         x1 = x1p;
+         x2 = x2p;
+         x3 = x3p;
+         funct_F(f->fp,up);
+         funct_Dm(dp,up);
+         x1 = x1m;
+         x2 = x2m;
+         x3 = x3m;
+         funct_F(f->fm,um);
+         funct_Dm(dm,um);
+      break;
 
-		case 'g':
-			x1 = x1p;
-			x2 = x2p;
-			x3 = x3p;
-			funct_G(f->fp,up);
-			funct_Dn(dp,up);
-			x1 = x1m;
-			x2 = x2m;
-			x3 = x3m;
-			funct_G(f->fm,um);
-			funct_Dn(dm,um);
-		break;	
+      case 'g':
+         x1 = x1p;
+         x2 = x2p;
+         x3 = x3p;
+         funct_G(f->fp,up);
+         funct_Dn(dp,up);
+         x1 = x1m;
+         x2 = x2m;
+         x3 = x3m;
+         funct_G(f->fm,um);
+         funct_Dn(dm,um);
+      break;
 
-		case 'h':
-			x1 = x1p;
-			x2 = x2p;
-			x3 = x3p;
-			funct_H(f->fp,up);
-			funct_Do(dp,up);
-			x1 = x1m;
-			x2 = x2m;
-			x3 = x3m;
-			funct_H(f->fm,um);
-			funct_Do(dm,um);
-		break;	
-	}
-			
-
-	lr = max(dp[0],dp[1]);
-	lr = max(lr,dp[2]);
-	ll = max(dm[0],dm[1]);
-	ll = max(ll,dm[2]);
-
-	f->lp = max(lr,ll);
-
-	lr = min(dp[0],dp[1]);
-	lr = min(lr,dp[2]);
-	ll = min(dm[0],dm[1]);
-	ll = min(ll,dm[2]);
-
-	f->lm = min(lr,ll);
+      case 'h':
+         x1 = x1p;
+         x2 = x2p;
+         x3 = x3p;
+         funct_H(f->fp,up);
+         funct_Do(dp,up);
+         x1 = x1m;
+         x2 = x2m;
+         x3 = x3m;
+         funct_H(f->fm,um);
+         funct_Do(dm,um);
+      break;
+   }
 
 
-	return 0;
+   lr = max(dp[0],dp[1]);
+   lr = max(lr,dp[2]);
+   ll = max(dm[0],dm[1]);
+   ll = max(ll,dm[2]);
+
+   f->lp = max(lr,ll);
+
+   lr = min(dp[0],dp[1]);
+   lr = min(lr,dp[2]);
+   ll = min(dm[0],dm[1]);
+   ll = min(ll,dm[2]);
+
+   f->lm = min(lr,ll);
+
+   return 0;
 }
 
 ///////////////////////////////////////////////////////////////////////////

@@ -23,43 +23,42 @@
 
 int main(void)
 {
-	int itprint;
-	double dtprint, tprint;
+   int itprint;
+   double dtprint, tprint;
 
-	allocateArray();
+   allocateArray();
 
-	//We set the mesh func_planarMESH.c
-	MESH();
+   //We set the mesh func_planarMESH.c
+   MESH();
 
-	//We set the initial parameters func_planarINITIAL.c
-	INITIAL(&dtprint);
-	tprint  = 0.0; //Initialize printing parameter
-	itprint = 0;   //Initialize file numeration
-	time    = 0.0; //Initialize time
-	dt      = 0.1; //Initialize dt
+   //We set the initial parameters func_planarINITIAL.c
+   INITIAL(&dtprint);
+   tprint  = 0.0; //Initialize printing parameter
+   itprint = 0;   //Initialize file numeration
+   time    = 0.0; //Initialize time
+   dt      = 0.1; //Initialize dt
 
-	start = omp_get_wtime();	
-	while(time <= tmax)
-	{	
-		//In this part we compute the time step
-		dt = TIMESTEP();
+   start = omp_get_wtime();	
+   while(time <= tmax)
+   {	
+      //In this part we compute the time step
+      dt = TIMESTEP();
 
-		//We print the values: file (DATOS*) and to terminal func_planarOUTPUT.c
-		PrintValues(&tprint,&dtprint,&itprint);
-	
-		//In here we set the integration method (Finite volume method)
-		INTEGRATION();
-	}
+      //We print the values: file (DATOS*) and to terminal func_planarOUTPUT.c
+      PrintValues(&tprint,&dtprint,&itprint);
 
-	delta = omp_get_wtime() - start;
-	printf("Delta %.4g seconds with %d threads\n",delta,4);
+      //In here we set the integration method (Finite volume method)
+      INTEGRATION();
+   }
 
-	free(U);
-	free(U1);
-//	free(U2);
-	free(X1);
-	free(X2);
-	free(X3);
+   delta = omp_get_wtime() - start;
+   printf("Delta %.4g seconds with %d threads\n",delta,4);
 
-	return 0;
+   free(U);
+   free(U1);
+   free(X1);
+   free(X2);
+   free(X3);
+
+   return 0;
 }

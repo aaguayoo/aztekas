@@ -22,145 +22,146 @@
 
 int PrintValues(double *tprint, double *dtprint, int *itprint)
 {
-	int n, i, j, k;
+   int n, i, j, k;
 
-	if(time >= *tprint)
-	{
-		printf("Time:%e, dt: %e, dx:%e \n", time, dt, dx1);
+   if(time >= *tprint)
+   {
+      printf("Time:%e, dt: %e, dx:%e \n", time, dt, dx1);
 
-		if(graf == 1)
-		{
-			Output1(itprint);
-		}
+      if(graf == 1)
+      {
+         Output1(itprint);
+      }
+      else if(graf == 2)
+      {
+         Output2(itprint);
+      }
+      else if(graf == 3)
+      {
+         Output3(itprint);
+      }
 
-		else if(graf == 2)
-		{
-			Output2(itprint);
-		}
-
-		else if(graf == 3)
-		{
-			Output3(itprint);
-		}
-	
-		*tprint = *tprint + *dtprint;
-		++*itprint;
-	}
-
-	time = time + dt;
-	return 0;
+      *tprint = *tprint + *dtprint;
+      ++*itprint;
+   }
+   
+   time = time + dt;
+   return 0;
 }
 
 int Output1(int *itprint)
 {
-	FILE *file;
-	int n, i, j, k;
-	char ext[20];
-	char dat[20];
-	char archivo[20];
-	int num;
+   FILE *file;
+   int n, i, j, k;
+   char ext[20];
+   char dat[20];
+   char archivo[20];
+   int num;
 
-	num = *itprint;
-	strcpy(ext,"_1D.dat");
-	snprintf(dat,8,"%d",num);
-	strcpy(archivo,"./Data1D/DATA_");
-	strcat(archivo,dat);
-	strcat(archivo,ext);
-	file = fopen(archivo,"w");
+   num = *itprint;
+   strcpy(ext,"_1D.dat");
+   snprintf(dat,8,"%d",num);
+   strcpy(archivo,"./Data1D/DATA_");
+   strcat(archivo,dat);
+   strcat(archivo,ext);
+   file = fopen(archivo,"w");
 
-	fprintf(file,"#############TIME##################\n");
-	fprintf(file,"%e \n",time);
-	fprintf(file,"###################################\n");
+   fprintf(file,"#############TIME##################\n");
+   fprintf(file,"%e \n",time);
+   fprintf(file,"###################################\n");
 
-	for(i = 3; i <= Nx1-3; i++)
-	{
+   for(i = 3; i <= Nx1-3; i++)
+   {
       fprintf(file,"%e %e %e %e\n",X1[i],\
-						U[c1(0,i)],\
-						U[c1(1,i)],\
-						U[c1(2,i)]);
-	}
-	
-	printf("itprint %d \n",*itprint);	
-	fclose(file);
-	return 0;
+      U[c1(0,i)],\
+      U[c1(1,i)],\
+      U[c1(2,i)]);
+   }
+
+   printf("itprint %d \n",*itprint);	
+   fclose(file);
+
+   return 0;
 }
 
 int Output2(int *itprint)
 {
-	FILE *file;
-	int n, i, j, k;
-	char ext[20];
-	char dat[20];
-	char archivo[20];
-	int num;
-	
-	num = *itprint;
-	strcpy(ext,"_2D.dat");
-	snprintf(dat,8,"%d",num);
-	strcpy(archivo,"./Data2D/DATA_");
-	strcat(archivo,dat);
-	strcat(archivo,ext);
-	file = fopen(archivo,"w");
+   FILE *file;
+   int n, i, j, k;
+   char ext[20];
+   char dat[20];
+   char archivo[20];
+   int num;
 
-	fprintf(file,"#############TIME##################\n");
-	fprintf(file,"%e \n",time);
-	fprintf(file,"###################################\n");
+   num = *itprint;
+   strcpy(ext,"_2D.dat");
+   snprintf(dat,8,"%d",num);
+   strcpy(archivo,"./Data2D/DATA_");
+   strcat(archivo,dat);
+   strcat(archivo,ext);
+   file = fopen(archivo,"w");
 
-	for(i = 3; i <= 3; i++)
-	{
-		for(j = 3; j <= Nx2-3; j++)
-		{
-     		fprintf(file,"%e %e %e %e %e %e\n",X1[i],X2[j],U[c2(0,i,j)],\
-							U[c2(1,i,j)],\
-							U[c2(2,i,j)],\
-							U[c2(3,i,j)]);
-		}
-	}
-	printf("itprint %d \n",*itprint);	
-	fclose(file);
+   fprintf(file,"#############TIME##################\n");
+   fprintf(file,"%e \n",time);
+   fprintf(file,"###################################\n");
 
-	return 0;
+   for(i = 3; i <= 3; i++)
+   {
+      for(j = 3; j <= Nx2-3; j++)
+      {
+         fprintf(file,"%e %e %e %e %e %e\n",X1[i],X2[j],U[c2(0,i,j)],\
+         U[c2(1,i,j)],\
+         U[c2(2,i,j)],\
+         U[c2(3,i,j)]);
+      }
+   }
+
+   printf("itprint %d \n",*itprint);	
+   fclose(file);
+   
+   return 0;
 }
 
 int Output3(int *itprint)
 {
-	FILE *file;
-	int n, i, j, k;
-	char ext[20];
-	char dat[20];
-	char archivo[20];
-	int num;
+   FILE *file;
+   int n, i, j, k;
+   char ext[20];
+   char dat[20];
+   char archivo[20];
+   int num;
 
-	num = *itprint;
-	strcpy(ext,"_3D.dat");
-	snprintf(dat,8,"%d",num);
-	strcpy(archivo,"./Data3D/DATA_");
-	strcat(archivo,dat);
-	strcat(archivo,ext);
-	file = fopen(archivo,"w");
+   num = *itprint;
+   strcpy(ext,"_3D.dat");
+   snprintf(dat,8,"%d",num);
+   strcpy(archivo,"./Data3D/DATA_");
+   strcat(archivo,dat);
+   strcat(archivo,ext);
+   file = fopen(archivo,"w");
 
-	fprintf(file,"#############TIME##################\n");
-	fprintf(file,"%e \n",time);
-	fprintf(file,"###################################\n");
+   fprintf(file,"#############TIME##################\n");
+   fprintf(file,"%e \n",time);
+   fprintf(file,"###################################\n");
 
-	for(i = 3; i <= Nx1-3; i++)
-	{
-		for(j = Nx2/2; j <= Nx2/2; j++)
-		{
-			for(k = Nx3/2; k <= Nx3/2; k++)
-			{
-				fprintf(file,"%f %f %f %f %f %f %f %f\n",X1[i],X2[j],X3[k],\
-				U[c3(0,i,j,k)],\
-				U[c3(1,i,j,k)],\
-				U[c3(2,i,j,k)],\
-				U[c3(3,i,j,k)],\
-				U[c3(4,i,j,k)]);
-			}
-		}
-	}
+   for(i = 3; i <= Nx1-3; i++)
+   {
+      for(j = Nx2/2; j <= Nx2/2; j++)
+      {
+         for(k = Nx3/2; k <= Nx3/2; k++)
+         {
+            fprintf(file,"%f %f %f %f %f %f %f %f\n",X1[i],X2[j],X3[k],\
+            U[c3(0,i,j,k)],\
+            U[c3(1,i,j,k)],\
+            U[c3(2,i,j,k)],\
+            U[c3(3,i,j,k)],\
+            U[c3(4,i,j,k)]);
+         }
+      }
+   }
 
-	printf("itprint %d \n",*itprint);	
-	fclose(file);
-	return 0;
+   priintf("itprint %d \n",*itprint);	
+   fclose(file);
+
+   return 0;
 }
 

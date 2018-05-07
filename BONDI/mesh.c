@@ -21,60 +21,60 @@
 
 int MESH()
 {
-	int i, j, k;
-	
-	dx1 = (x1max - x1min)/((double)Nx1-6);
-	dx2 = (x2max - x2min)/((double)Nx2-6);
-	dx3 = (x3max - x3min)/((double)Nx3-6);
+   int i, j, k;
 
-	if(dim == 1)
-	{	
-		for(i = 0; i <= Nx1-0; i++)
-		{
-			X1[i] = x1min + (i-3)*(dx1); 
-			X1p[i] = x1min + (i+0.5-3)*(dx1);
-			X1m[i] = x1min + (i-0.5-3)*(dx1);
-		}
-	}
-	else if(dim == 2)
-	{
-		for(i = 0; i <= Nx1-0; i++)
-		{
-			X1[i]  = x1min + (i-3)*(dx1); 
-			X1p[i] = x1min + (i+0.5-3)*(dx1);
-			X1m[i] = x1min + (i-0.5-3)*(dx1);
-		}
-	
-		for(j = 0; j <= Nx2-0; j++)
-		{
-			X2[j]  = x2min + (j-3)*(dx2);
-			X2p[j] = x2min + (j+0.5-3)*(dx2);
-			X2m[j] = x2min + (j-0.5-3)*(dx2);
-		}
-	}
-	else if(dim == 3)
-	{
-		for(i = 0; i <= Nx1-0; i++)
-		{
-			X1[i]  = x1min + (i-3)*(dx1); 
-			X1p[i] = x1min + (i+0.5-3)*(dx1);
-			X1m[i] = x1min + (i-0.5-3)*(dx1);
-		}
-	
-		for(j = 0; j <= Nx2-0; j++)
-		{
-			X2[j]  = x2min + (j-3)*(dx2); 
-			X2p[j] = x2min + (j+0.5-3)*(dx2);
-			X2m[j] = x2min + (j-0.5-3)*(dx2);
-		}
-		
-		for(k = 0; k <= Nx3-0; k++)
-		{
-			X3[k]  = x3min + (k-3)*(dx3); 
-			X3p[k] = x3min + (k+0.5-3)*(dx3);
-			X3m[k] = x3min + (k-0.5-3)*(dx3);
-		}
-	}
+   dx1 = (x1max - x1min)/((double)Nx1-6);
+   dx2 = (x2max - x2min)/((double)Nx2-6);
+   dx3 = (x3max - x3min)/((double)Nx3-6);
 
-	return 0;
+   if(dim == 1)
+   {
+      for(i = 0; i <= Nx1-0; i++)
+      {
+         X1[i] = x1min + (i-3)*(dx1);
+         X1p[i] = x1min + (i+0.5-3)*(dx1);
+         X1m[i] = x1min + (i-0.5-3)*(dx1);
+      }
+   }
+   else if(dim == 2)
+   {
+      for(i = 0; i <= Nx1-0; i++)
+      {
+         X1[i]  = x1min + (i-3)*(dx1);
+         X1p[i] = x1min + (i+0.5-3)*(dx1);
+         X1m[i] = x1min + (i-0.5-3)*(dx1);
+      }
+
+      for(j = 0; j <= Nx2-0; j++)
+      {
+         X2[j]  = x2min + (j-3)*(dx2);
+         X2p[j] = x2min + (j+0.5-3)*(dx2);
+         X2m[j] = x2min + (j-0.5-3)*(dx2);
+      }
+   }
+   else if(dim == 3)
+   {
+      for(i = 0; i <= Nx1-0; i++)
+      {
+         X1[i]  = x1min + (i-3)*(dx1);
+         X1p[i] = x1min + (i+0.5-3)*(dx1);
+         X1m[i] = x1min + (i-0.5-3)*(dx1);
+      }
+
+      for(j = 0; j <= Nx2-0; j++)
+      {
+         X2[j]  = x2min + (j-3)*(dx2);
+         X2p[j] = x2min + (j+0.5-3)*(dx2);
+         X2m[j] = x2min + (j-0.5-3)*(dx2);
+      }
+
+      for(k = 0; k <= Nx3-0; k++)
+      {
+         X3[k]  = x3min + (k-3)*(dx3);
+         X3p[k] = x3min + (k+0.5-3)*(dx3);
+         X3m[k] = x3min + (k-0.5-3)*(dx3);
+      }
+   }
+
+   return 0;
 }

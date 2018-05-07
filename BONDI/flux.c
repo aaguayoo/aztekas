@@ -1,4 +1,4 @@
-/**
+/*
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
  *   the Free Software Foundation, either version 3 of the License, or
@@ -23,92 +23,93 @@
 
 int FLUX1D(vec_ *v, lim_ *l, int *I)
 {
-	int n;
+   int n;
 
-	flx_ f;
+   flx_ f;
 
-	AMATRIX1D(l->ux,v,I);
-	VECTOR(1,'f',l,&f,I);
-	HLL(v->Fp,&f);
-	VECTOR(0,'f',l,&f,I);
-	HLL(v->Fm,&f);
+   AMATRIX1D(l->ux,v,I);
+   VECTOR(1,'f',l,&f,I);
+   HLL(v->Fp,&f);
+   VECTOR(0,'f',l,&f,I);
+   HLL(v->Fm,&f);
 
-	return 0;
+   return 0;
 }
 
 int FLUX2D(vec_ *v, lim_ *l, int *I)
 {
-	int n;
+   int n;
 
-	flx_ f;
+   flx_ f;
 
-	AMATRIX2D(l->ux,v,I);
-	VECTOR(1,'f',l,&f,I);
-	HLL(v->Fp,&f);
-	VECTOR(1,'g',l,&f,I);
-	HLL(v->Gp,&f);
-	VECTOR(0,'f',l,&f,I);
-	HLL(v->Fm,&f);
-	VECTOR(0,'g',l,&f,I);
-	HLL(v->Gm,&f);
+   AMATRIX2D(l->ux,v,I);
+   VECTOR(1,'f',l,&f,I);
+   HLL(v->Fp,&f);
+   VECTOR(1,'g',l,&f,I);
+   HLL(v->Gp,&f);
+   VECTOR(0,'f',l,&f,I);
+   HLL(v->Fm,&f);
+   VECTOR(0,'g',l,&f,I);
+   HLL(v->Gm,&f);
 
-	return 0;
+   return 0;
 }
 
 int FLUX3D(vec_ *v, lim_ *l, int *I)
 {
-	int n;
+   int n;
 
-	flx_ f;
+   flx_ f;
 
-	AMATRIX3D(l->ux,v,I);
-	VECTOR(1,'f',l,&f,I);
-	HLL(v->Fp,&f);
-	VECTOR(1,'g',l,&f,I);
-	HLL(v->Gp,&f);
-	VECTOR(1,'h',l,&f,I);
-	HLL(v->Hp,&f);
-	VECTOR(0,'f',l,&f,I);
-	HLL(v->Fm,&f);
-	VECTOR(0,'g',l,&f,I);
-	HLL(v->Gm,&f);
-	VECTOR(0,'h',l,&f,I);
-	HLL(v->Hm,&f);
+   AMATRIX3D(l->ux,v,I);
+   VECTOR(1,'f',l,&f,I);
+   HLL(v->Fp,&f);
+   VECTOR(1,'g',l,&f,I);
+   HLL(v->Gp,&f);
+   VECTOR(1,'h',l,&f,I);
+   HLL(v->Hp,&f);
+   VECTOR(0,'f',l,&f,I);
+   HLL(v->Fm,&f);
+   VECTOR(0,'g',l,&f,I);
+   HLL(v->Gm,&f);
+   VECTOR(0,'h',l,&f,I);
+   HLL(v->Hm,&f);
 
-	return 0;
+   return 0;
 }
 
 int HLL(double *F, flx_ *f)
 {
-	int n;
+   int n;
    double q[eq];
 
-	for(n = 0; n < eq; n++)
-	{
-		q[n] = (f->lp)*(f->lm)*(f->qp[n] - f->qm[n]);
-	}
+   for(n = 0; n < eq; n++)
+   {
+      q[n] = (f->lp)*(f->lm)*(f->qp[n] - f->qm[n]);
+   }
 
-	if(f->lm < 0 && f->lp > 0)
-	{
-		for(n = 0; n < eq; n++)
-		{
-			F[n] = ((f->lp)*(f->fm[n]) - (f->lm)*(f->fp[n]) + q[n])/(f->lp - f->lm); 
-		}
-	}
-	else if(f->lm >= 0)
-	{
-		for(n = 0; n < eq; n++)
-		{
-			F[n] = f->fm[n];
-		}
-	}
-	else if(f->lp <= 0)
-	{
-		for(n = 0; n < eq; n++)
-		{
-			F[n] = f->fp[n];
-		}
-	}
+   if(f->lm < 0 && f->lp > 0)
+   {
+      for(n = 0; n < eq; n++)
+      {
+         F[n] = ((f->lp)*(f->fm[n]) - (f->lm)*(f->fp[n]) + \
+         q[n])/(f->lp - f->lm); 
+      }
+   }
+   else if(f->lm >= 0)
+   {
+      for(n = 0; n < eq; n++)
+      {
+         F[n] = f->fm[n];
+      }
+   }
+   else if(f->lp <= 0)
+   {
+      for(n = 0; n < eq; n++)
+      {
+         F[n] = f->fp[n];
+      }
+   }
 
    return 0;
 }
