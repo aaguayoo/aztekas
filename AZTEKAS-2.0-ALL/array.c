@@ -13,6 +13,10 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/* In this file, functions c1, c2 and c3, are created. These functions are used
+ * as an easy way of denoting the component of vectors U, U1 and U2.
+ */
+
 //Do not erase any of these libraries//
 #include<stdio.h>
 #include<math.h>
