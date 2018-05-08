@@ -93,7 +93,7 @@ int HLL(double *F, flx_ *f)
       for(n = 0; n < eq; n++)
       {
          F[n] = ((f->lp)*(f->fm[n]) - (f->lm)*(f->fp[n]) + \
-         q[n])/(f->lp - f->lm); 
+         q[n])/(f->lp - f->lm);
       }
    }
    else if(f->lm >= 0)

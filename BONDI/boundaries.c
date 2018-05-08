@@ -25,14 +25,14 @@ int BOUNDARIES(double *B)
    int n, i, j, k;
 
    if(dim == 1)
-   {	
+   {
       for(n = 0; n < eq; n++)
       {
          B[c1(n,3)] = B[c1(n,4)];
          B[c1(n,2)] = B[c1(n,4)];
          B[c1(n,1)] = B[c1(n,4)];
          B[c1(n,0)] = B[c1(n,4)];
-      
+
          B[c1(n,Nx1-3)] = B[c1(n,Nx1-4)];
          B[c1(n,Nx1-2)] = B[c1(n,Nx1-4)];
          B[c1(n,Nx1-1)] = B[c1(n,Nx1-4)];
@@ -48,30 +48,30 @@ int BOUNDARIES(double *B)
             B[c2(n,i,2)] =  B[c2(n,i,4)];
             B[c2(n,i,1)] =  B[c2(n,i,5)];
             B[c2(n,i,0)] =  B[c2(n,i,6)];
-      
+
             B[c2(n,i,Nx2-3)] = B[c2(n,i,Nx2-4)];
             B[c2(n,i,Nx2-2)] = B[c2(n,i,Nx2-4)];
             B[c2(n,i,Nx2-1)] = B[c2(n,i,Nx2-4)];
             B[c2(n,i,Nx2)]   = B[c2(n,i,Nx2-4)];
-      
+
             B[c2(n,i,3)] = 0.5*(B[c2(n,i,2)] + B[c2(n,i,4)]);
          }
-      
+
          for(j = 0; j <= Nx2; j++)
          {
             B[c2(n,2,j)] = B[c2(n,4,j)];
             B[c2(n,1,j)] = B[c2(n,5,j)];
             B[c2(n,0,j)] = B[c2(n,6,j)];
-      
+
             B[c2(n,Nx1-3,j)] = B[c2(n,Nx1-4,j)];
             B[c2(n,Nx1-2,j)] = B[c2(n,Nx1-4,j)];
             B[c2(n,Nx1-1,j)] = B[c2(n,Nx1-4,j)];
             B[c2(n,Nx1  ,j)] = B[c2(n,Nx1-4,j)];
-      
+
             B[c2(n,3,j)] = 0.5*(B[c2(n,2,j)] + B[c2(n,4,j)]);
          }
       }
-      
+
       ////////////////////////////////////////////////
       ///*---------JET-BOUNDARY-------------------*///
       ////////////////////////////////////////////////
@@ -83,7 +83,7 @@ int BOUNDARIES(double *B)
          B[c2(2,1,j)] = -B[c2(2,6,j)];
          B[c2(2,0,j)] = -B[c2(2,7,j)];
       }
-      
+
       for(i = 0; i <= Nx1; i++)
       {
          for(j = 0; j <= Nx2; j++)
@@ -97,44 +97,44 @@ int BOUNDARIES(double *B)
                   B[c2(2,i,j)] = vx1_jet;
                   B[c2(3,i,j)] = vx2_jet + 0.29*fabs(sin(2*PI*time/5.0));
                }
-            }	
+            }
          }
       }
-      */		
+      */
       ////////////////////////////////////////////////
       ////////////////////////////////////////////////
-      
+
       ////////////////////////////////////////////////
       ///*---------ACRETION-BOUNDARY--------------*///
       ////////////////////////////////////////////////
-      
+
       for(i = 0; i <= Nx1; i++)
       {
          B[c2(3,i,2)] = -B[c2(3,i,4)];
          B[c2(3,i,1)] = -B[c2(3,i,5)];
          B[c2(3,i,0)] = -B[c2(3,i,6)];
-      
+
          B[c2(3,i,3)] = 0.5*(B[c2(3,i,2)] + B[c2(3,i,4)]);
       }
-      
+
       for(j = 0; j <= Nx2; j++)
       {
          B[c2(2,2,j)] = -B[c2(2,4,j)];
          B[c2(2,1,j)] = -B[c2(2,5,j)];
          B[c2(2,0,j)] = -B[c2(2,6,j)];
-      
+
          B[c2(2,3,j)] = 0.5*(B[c2(2,2,j)] + B[c2(2,4,j)]);
       }
-      
+
       for(i = 0; i <= Nx1; i++)
-      {	
+      {
          for(j = 0; j <= Nx2; j++)
          {
             double R = sqrt(X1[i]*X1[i] + X2[j]*X2[j]);
             double r  = X1[i];
             double z  = X2[j];
             double rho, pre, vr, vz;
-      
+
             if(z >= r_int && z < (r_int + dx2) && r == 0.0)
             {
                rho = B[c2(0,i,j)];
@@ -142,7 +142,7 @@ int BOUNDARIES(double *B)
                vr  = B[c2(2,i,j)];
                vz  = B[c2(3,i,j)];
             }
-      
+
             if(R < r_int)
             {
                B[c2(2,i,j)] = vr;
@@ -160,8 +160,8 @@ int BOUNDARIES(double *B)
 
       ////////////////////////////////////////////////
       ////////////////////////////////////////////////
-   }	
-      
+   }
+
    else if(dim == 3)
    {
       for(n = 0; n < eq; n++)
@@ -173,13 +173,13 @@ int BOUNDARIES(double *B)
                B[c3(n,i,2,k)] =  B[c3(n,i,3,k)];
                B[c3(n,i,1,k)] =  B[c3(n,i,4,k)];
                B[c3(n,i,0,k)] =  B[c3(n,i,5,k)];
-   
+
                B[c3(n,i,Nx2-2,k)] = B[c3(n,i,Nx2-3,k)];
                B[c3(n,i,Nx2-1,k)] = B[c3(n,i,Nx2-4,k)];
                B[c3(n,i,Nx2  ,k)] = B[c3(n,i,Nx2-5,k)];
             }
          }
-   
+
          for(j = 0; j <= Nx2-0; j++)
          {
             for(k = 0; k <= Nx3-0; k++)
@@ -187,13 +187,13 @@ int BOUNDARIES(double *B)
                B[c3(n,2,j,k)] = B[c3(n,3,j,k)];
                B[c3(n,1,j,k)] = B[c3(n,4,j,k)];
                B[c3(n,0,j,k)] = B[c3(n,5,j,k)];
-   
+
                B[c3(n,Nx1-2,j,k)] = B[c3(n,Nx1-3,j,k)];
                B[c3(n,Nx1-1,j,k)] = B[c3(n,Nx1-4,j,k)];
                B[c3(n,Nx1  ,j,k)] = B[c3(n,Nx1-5,j,k)];
             }
          }
-   
+
          for(i = 0; i <= Nx1-0; i++)
          {
             for(j = 0; j <= Nx2-0; j++)
@@ -201,7 +201,7 @@ int BOUNDARIES(double *B)
                B[c3(n,i,j,2)] = B[c3(n,i,j,3)];
                B[c3(n,i,j,1)] = B[c3(n,i,j,4)];
                B[c3(n,i,j,0)] = B[c3(n,i,j,5)];
-   
+
                B[c3(n,i,j,Nx3-2)] = B[c3(n,i,j,Nx3-3)];
                B[c3(n,i,j,Nx3-1)] = B[c3(n,i,j,Nx3-4)];
                B[c3(n,i,j,Nx3  )] = B[c3(n,i,j,Nx3-5)];
@@ -209,6 +209,6 @@ int BOUNDARIES(double *B)
          }
       }
    }
-   
+
    return 0;
 }

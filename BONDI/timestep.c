@@ -41,7 +41,7 @@ double TIMESTEP()
       }
    }
    else if(dim == 2)
-   { 
+   {
       for(i = 3; i <= Nx1-3; i++)
       {
          for(j = 3; j <= Nx2-3; j++)

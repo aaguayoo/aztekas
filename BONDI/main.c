@@ -38,9 +38,9 @@ int main(void)
    time    = 0.0; //Initialize time
    dt      = 0.1; //Initialize dt
 
-   start = omp_get_wtime();	
+   start = omp_get_wtime();
    while(time <= tmax)
-   {	
+   {
       //In this part we compute the time step
       dt = TIMESTEP();
 

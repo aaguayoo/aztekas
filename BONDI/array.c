@@ -27,19 +27,19 @@ int c1(int n, int i)
    c = n*(Nx1+1) + i;
    return c;
 }
-   
+
 int c2(int n, int i, int j)
 {
    int c;
-   
+
    c = n*(Nx1+1)*(Nx2+1) + i*(Nx2+1) + j;
    return c;
 }
-   
+
 int c3(int n, int i, int j, int k)
 {
    int c;
-   
+
    c = n*(Nx1+1)*(Nx2+1)*(Nx3+1) + i*(Nx2+1)*(Nx3+1) + j*(Nx3+1) + k;
    return c;
 }
