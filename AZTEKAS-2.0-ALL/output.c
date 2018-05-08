@@ -80,7 +80,7 @@ int Output1(int *itprint)
       U[c1(2,i)]);
    }
 
-   printf("itprint %d \n",*itprint);	
+   printf("itprint %d \n",*itprint);
    fclose(file);
    return 0;
 }
@@ -118,7 +118,7 @@ int Output2(int *itprint)
       }
    }
 
-   printf("itprint %d \n",*itprint);	
+   printf("itprint %d \n",*itprint);
    fclose(file);
 
    return 0;
@@ -161,7 +161,7 @@ int Output3(int *itprint)
       }
    }
 
-   printf("itprint %d \n",*itprint);	
+   printf("itprint %d \n",*itprint);
    fclose(file);
    return 0;
 }

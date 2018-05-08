@@ -92,15 +92,15 @@ int VECTOR(int pm, char flux, lim_ *l, flx_ *f, int *I)
 			case 'f':
 				u = l->ux1p;
 			break;
-			
+
 			case 'g':
 				u = l->ux2p;
 			break;
-			
+
 			case 'h':
 				u = l->ux3p;
 			break;
-			
+
 		}
    }
    else
@@ -110,7 +110,7 @@ int VECTOR(int pm, char flux, lim_ *l, flx_ *f, int *I)
 			case 'f':
 				u = l->ux1m;
 			break;
-			
+
 			case 'g':
 				u = l->ux2m;
 			break;
@@ -153,7 +153,7 @@ int VECTOR(int pm, char flux, lim_ *l, flx_ *f, int *I)
 	funct_Q(f->qm,um);
 	switch(flux)
 	{
-		case 'f':	
+		case 'f':
 			x1 = x1p;
 			x2 = x2p;
 			x3 = x3p;
@@ -177,7 +177,7 @@ int VECTOR(int pm, char flux, lim_ *l, flx_ *f, int *I)
 			x3 = x3m;
 			funct_G(f->fm,um);
 			funct_Dn(dm,um);
-		break;	
+		break;
 
 		case 'h':
 			x1 = x1p;
@@ -190,9 +190,9 @@ int VECTOR(int pm, char flux, lim_ *l, flx_ *f, int *I)
 			x3 = x3m;
 			funct_H(f->fm,um);
 			funct_Do(dm,um);
-		break;	
+		break;
 	}
-			
+
 
 	lr = max(dp[0],dp[1]);
 	lr = max(lr,dp[2]);
