@@ -95,7 +95,7 @@ int BOUNDARIES(double *B)
                   B[c2(0,i,j)] = n_jet;
                   B[c2(1,i,j)] = p_jet;
                   B[c2(2,i,j)] = vx1_jet;
-                  B[c2(3,i,j)] = vx2_jet + 0.29*fabs(sin(2*PI*time/5.0));
+                  B[c2(3,i,j)] = vx2_jet;
                }
             }
          }

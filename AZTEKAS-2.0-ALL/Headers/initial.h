@@ -15,7 +15,7 @@
 #define n_atm    1.0
 #define vx1_jet  0.0
 #define vx1_atm  0.0
-#define vx2_jet  0.70
+#define vx2_jet  0.99
 #define vx2_atm  0.0
 #define vx3_jet  0.0
 #define vx3_atm  0.0
