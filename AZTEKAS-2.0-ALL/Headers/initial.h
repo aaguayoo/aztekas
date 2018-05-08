@@ -12,7 +12,7 @@
 
 //INITIAL HYDRODYNAMICAL VALUES (Jet)//
 #define n_jet    0.1 
-#define n_atm    1.0
+#define n_atm    10.0
 #define vx1_jet  0.0
 #define vx1_atm  0.0
 #define vx2_jet  0.99

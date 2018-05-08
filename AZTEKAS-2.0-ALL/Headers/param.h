@@ -1,6 +1,6 @@
 //DOMAIN//
-#define x1max 10.0
-#define x2max 20.0
+#define x1max 8.0
+#define x2max 40.0
 #define x3max 1.0
 #define x1min 0.0
 #define x2min 0.0
@@ -22,7 +22,7 @@
 #define alfa  1
 
 //COURANT NUMBER//
-#define cou   0.2
+#define cou   0.1
 
 //POLYTROPIC INDEX//
 #define K  1.66666666666666666666666666666666
