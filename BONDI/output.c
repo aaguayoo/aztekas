@@ -159,7 +159,7 @@ int Output3(int *itprint)
       }
    }
 
-   priintf("itprint %d \n",*itprint);	
+   printf("itprint %d \n",*itprint);	
    fclose(file);
 
    return 0;
