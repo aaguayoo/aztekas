@@ -7,13 +7,13 @@
 #define x3min 0.0
 
 //MESH//
-#define Nx1 206
-#define Nx2 206
+#define Nx1 106
+#define Nx2 106
 #define Nx3 0
 
 //MAX TIME & PRINT TIME//
-#define tmax      30
-#define timefile  0.1
+#define tmax      51.
+#define timefile  10.
 
 //DIMENSION PARAMETERS (num of equations, dim of graf, physical dimension)//
 #define eq    4
@@ -25,8 +25,18 @@
 #define cou   0.5
 
 //POLYTROPIC INDEX//
-#define K  1.00001
+#define K  1.333333333333
 
-//ACRETION DOMAIN//
+//ACCRETION DOMAIN//
 #define r_int 0.10
 #define r_bou 10.0
+
+//DENSITY PROFILE
+// (theta_0 should be in units of pi, delta_theta is the width of the step function)
+#define theta_0 0.6
+#define delta_theta 0.02
+
+//OUTPUT FILE AND DIRECTORY
+#define outputdirectory "pi_6/"
+#define outputfile  "back_"
+

@@ -27,12 +27,22 @@
 #define z_jet    1.0
 
 //BONDI (PARAMETERS AT R = 10R_BONDI//
-#define n_5_3	  1.1016569
-#define n_4_3 	  1.1033484
-#define n_1		  1.1051141
-#define p_5_3    0.7050522
-#define p_4_3	  0.8550893
-#define p_1		  1.1051141
-#define v_5_3    0.0022693
-#define v_4_3    0.0064087
-#define v_1		  0.0101385
+//#define n_5_3	  1.1016569
+//#define n_4_3 	  1.1033484
+//#define n_1		  1.1051141
+//#define p_5_3    0.7050522
+//#define p_4_3	  0.8550893
+//#define p_1		  1.1051141
+//#define v_5_3    0.0022693
+//#define v_4_3    0.0064087
+//#define v_1		  0.0101385
+
+//BONDI ACCRETION (Gamma = 4/3, r0 = 10 r_B)//
+#define density_0    1.10335
+#define pressure_0   0.855091
+#define velocity_0   -0.00641 
+
+//BONDI ACCRETION (Gamma = 5/3, r0 = 10 r_B)//
+//#define density_0    1.10165
+//#define pressure_0   0.705052
+//#define velocity_0   -0.00226933
