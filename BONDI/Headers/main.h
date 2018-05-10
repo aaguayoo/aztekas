@@ -16,7 +16,7 @@ double dt, time;
 
 double start, delta;
 
-int eq, graf, dim, alfa;
+//int eq, graf, dim, alfa;
 int Nx1, Nx2, Nx3;
 double x1max, x2max, x3max, x1min, x2min, x3min;
 double tmax, timefile;

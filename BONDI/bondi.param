@@ -3,10 +3,10 @@ outputdirectory = bondi/
 outputfile      = data_
 
 % DIMENSION PARAMETERS (num of equations, dim of graf, physical dimension)
-eq   = 4
-graf = 2
-dim  = 2
-alfa = 1
+%eq   = 4
+%graf = 2
+%dim  = 2
+%alfa = 1
 
 % Define domain limits
 x1max = 10.0

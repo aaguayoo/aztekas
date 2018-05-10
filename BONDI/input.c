@@ -65,7 +65,7 @@ int read_parameters_file(char const *paramfile_name)
             {
                strcpy(outputfile,t_value);
             }
-
+/*
             if(strcmp(t_key,"eq")==0)
             {
                eq = atoi(t_value);
@@ -85,7 +85,7 @@ int read_parameters_file(char const *paramfile_name)
             {
                alfa = atoi(t_value);
             }
-
+*/
             if(strcmp(t_key,"x1max")==0)
             {
                x1max = atof(t_value);

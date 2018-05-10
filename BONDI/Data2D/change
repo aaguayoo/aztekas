@@ -1,7 +1,0 @@
-#!/bin/bash
-
-old=$1
-
-new=$2
-
-sed -i s/${old}/${new}/g pyt2 
