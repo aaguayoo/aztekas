@@ -37,10 +37,6 @@ int main(int argc, char* argv[])
    strcpy(paramfile_name, argv[1]);
    
    read_parameters_file(paramfile_name);   
-   
-   printf("%i %i %i %i\n",eq,dim,graf,alfa) ;   
-   
-   exit(EXIT_FAILURE); 
       
 	 // create output directory
    char create_dir[] = "mkdir -p ";	
