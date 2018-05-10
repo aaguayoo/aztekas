@@ -10,6 +10,7 @@ array.c \
 mesh.c \
 initial.c \
 timestep.c \
+input.c \
 output.c \
 integration.c \
 pvrs-rk.c \

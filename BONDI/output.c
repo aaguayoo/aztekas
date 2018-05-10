@@ -59,12 +59,13 @@ int Output1(int *itprint)
    int num;
 
    num = *itprint;
-   strcpy(ext,"_1D.dat");
+   strcpy(ext,".dat");
    snprintf(dat,8,"%d",num);
-   strcpy(archivo,"./Data1D/DATA_");
+   strcpy(archivo,outputdirectory);
+   strcat(archivo,outputfile);
    strcat(archivo,dat);
    strcat(archivo,ext);
-   file = fopen(archivo,"w");
+   file = fopen(archivo,"w");   
 
    fprintf(file,"#############TIME##################\n");
    fprintf(file,"%e \n",time);
@@ -94,9 +95,10 @@ int Output2(int *itprint)
    int num;
 
    num = *itprint;
-   strcpy(ext,"_2D.dat");
+   strcpy(ext,".dat");
    snprintf(dat,8,"%d",num);
-   strcpy(archivo,"./Data2D/DATA_");
+   strcpy(archivo,outputdirectory);
+   strcat(archivo,outputfile);
    strcat(archivo,dat);
    strcat(archivo,ext);
    file = fopen(archivo,"w");
@@ -105,8 +107,8 @@ int Output2(int *itprint)
    fprintf(file,"%e \n",time);
    fprintf(file,"###################################\n");
 
-   for(i = 3; i <= 3; i++)
-   {
+   for(i = 3; i <= Nx1-3; i++)
+	 {
       for(j = 3; j <= Nx2-3; j++)
       {
          fprintf(file,"%e %e %e %e %e %e\n",X1[i],X2[j],U[c2(0,i,j)],\
@@ -132,9 +134,10 @@ int Output3(int *itprint)
    int num;
 
    num = *itprint;
-   strcpy(ext,"_3D.dat");
+   strcpy(ext,".dat");
    snprintf(dat,8,"%d",num);
-   strcpy(archivo,"./Data3D/DATA_");
+   strcpy(archivo,outputdirectory);
+   strcat(archivo,outputfile);
    strcat(archivo,dat);
    strcat(archivo,ext);
    file = fopen(archivo,"w");

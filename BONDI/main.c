@@ -21,10 +21,27 @@
 #include<string.h>
 #include"./Headers/main.h"
 
-int main(void)
+int main(int argc, char* argv[])
 {
    int itprint;
    double dtprint, tprint;
+
+   if(argc != 2) 
+   {
+      printf("%s\n","Wrong number of arguments") ;
+      printf("%s\n","Execute as:") ;    
+      printf("%s\n","./aztekas paramfile") ;  
+      exit(EXIT_FAILURE);
+   }
+
+   strcpy(paramfile_name, argv[1]);
+   
+   read_parameters_file(paramfile_name);   
+      
+	 // create output directory
+   char create_dir[] = "mkdir -p ";	
+	 strcat(create_dir,outputdirectory);	
+	 int sysret = system(create_dir);
 
    allocateArray();
 
