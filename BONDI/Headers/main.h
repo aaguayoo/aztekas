@@ -1,6 +1,6 @@
 #include"const.h"
-#include"initial.h"
-#include"param.h"
+//#include"initial.h"
+//#include"param.h"
 
 double *U, *U1, *U2, *U3;
 double *X1;
@@ -15,6 +15,21 @@ double dx1, dx2, dx3;
 double dt, time;
 
 double start, delta;
+
+int eq, graf, dim, alfa;
+int Nx1, Nx2, Nx3;
+double x1max, x2max, x3max, x1min, x2min, x3min;
+double tmax, timefile;
+double cou, K;
+
+int rho_boundary;
+double r_bou, r_int;
+double theta_0, delta_theta;
+double density_0, pressure_0, velocity_0;
+
+double nl, nr, pl, pr, vx1l, vx1r, vx2l, vx2r, vx3l, vx3r;
+
+char paramfile_name[50], outputdirectory[50], outputfile[50];
 
 typedef struct
 {
@@ -51,6 +66,8 @@ typedef struct
 	double Hp[10];
 	double Hm[10];
 }vec_;
+
+int read_parameters_file(char const *paramfile_name);
 
 double LIMITER(double A, double B, char r);
 

@@ -25,7 +25,7 @@ void INITIAL(double *dtprint)
 
    if(dim == 1)
    {
-      for(i = 0; i <= Nx1; i++)
+/*      for(i = 0; i <= Nx1; i++)
       {
          if(X1[i] < 0.5)
          {
@@ -40,7 +40,7 @@ void INITIAL(double *dtprint)
             U[c1(2,i)] = vx1r;
          }
       }
-   }
+*/   }
    else if(dim == 2)
    {
       ///////////////////////////
@@ -84,36 +84,44 @@ void INITIAL(double *dtprint)
       //-----Acretion----------//
       ///////////////////////////
 
-      for(i = 0; i <= Nx1; i++)
-      {
-         for(j = 0; j <= Nx2; j++)
-         {
-            double R = sqrt(X1[i]*X1[i] + X2[j]*X2[j]);
-            double r  = X1[i];
-            double z  = X2[j];
-            if(R <= r_int)
-            {
-               U[c2(0,i,j)] = n_1;
-               U[c2(1,i,j)] = p_1;
-               U[c2(2,i,j)] = 0.0;
-               U[c2(3,i,j)] = 0.0;
-            }
-            else if(R > r_bou)
-            {
-               U[c2(0,i,j)] = n_1;
-               U[c2(1,i,j)] = p_1;
-               U[c2(2,i,j)] = -v_1*(r/R);
-               U[c2(3,i,j)] = -v_1*(z/R);
-            }
-            else
-            {
-               U[c2(0,i,j)] = n_1;
-               U[c2(1,i,j)] = p_1;
-               U[c2(2,i,j)] = 0.0;
-               U[c2(3,i,j)] = 0.0;
-            }
-         }
-      }
+		for(i = 0; i <= Nx1; i++)
+		{	
+			for(j = 0; j <= Nx2; j++)
+			{
+					U[c2(0,i,j)] = density_0;
+					U[c2(1,i,j)] = pressure_0;
+					U[c2(2,i,j)] = 0.0;
+					U[c2(3,i,j)] = 0.0;
+			}
+		}
+		
+    int jmin;
+    double r, R, z, dummy;
+
+		for(i = 3; i <= Nx1; i++)
+		{	
+		  dummy = r_bou*r_bou - X1[i]*X1[i];
+		  if (dummy >=0 ) 
+		  {
+		    jmin = sqrt(dummy)/dx2 + 4;
+		  }  
+		  else
+		  {
+		    jmin = 3;
+		  }
+		  		  
+			for(j = jmin; j <= Nx2; j++)
+			{
+			  R = X1[i];
+			  z = X2[j];
+			  r = sqrt(R*R + z*z);
+			  
+				U[c2(0,i,j)] = density_0;
+				U[c2(1,i,j)] = pressure_0;
+				U[c2(2,i,j)] = velocity_0*(R/r);
+				U[c2(3,i,j)] = velocity_0*(z/r);
+			}
+		}
 
       /////////////////////////////
 
@@ -173,7 +181,7 @@ void INITIAL(double *dtprint)
    }
    else if(dim == 3)
    {
-      for(i = 0; i <= Nx1; i++)
+/*      for(i = 0; i <= Nx1; i++)
       {
          for(j = 0; j <= Nx2; j++)
          {
@@ -198,7 +206,7 @@ void INITIAL(double *dtprint)
             }
          }
       }
-   }
+*/   }
    else
    {
       printf("ERROR: Variable dim distinta de {1,2,3}");

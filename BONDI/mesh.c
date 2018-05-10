@@ -29,7 +29,7 @@ int MESH()
 
    if(dim == 1)
    {
-      for(i = 0; i <= Nx1-0; i++)
+      for(i = 0; i <= Nx1; i++)
       {
          X1[i] = x1min + (i-3)*(dx1);
          X1p[i] = x1min + (i+0.5-3)*(dx1);
@@ -38,14 +38,14 @@ int MESH()
    }
    else if(dim == 2)
    {
-      for(i = 0; i <= Nx1-0; i++)
+      for(i = 0; i <= Nx1; i++)
       {
          X1[i]  = x1min + (i-3)*(dx1);
          X1p[i] = x1min + (i+0.5-3)*(dx1);
          X1m[i] = x1min + (i-0.5-3)*(dx1);
       }
 
-      for(j = 0; j <= Nx2-0; j++)
+      for(j = 0; j <= Nx2; j++)
       {
          X2[j]  = x2min + (j-3)*(dx2);
          X2p[j] = x2min + (j+0.5-3)*(dx2);
@@ -54,21 +54,21 @@ int MESH()
    }
    else if(dim == 3)
    {
-      for(i = 0; i <= Nx1-0; i++)
+      for(i = 0; i <= Nx1; i++)
       {
          X1[i]  = x1min + (i-3)*(dx1);
          X1p[i] = x1min + (i+0.5-3)*(dx1);
          X1m[i] = x1min + (i-0.5-3)*(dx1);
       }
 
-      for(j = 0; j <= Nx2-0; j++)
+      for(j = 0; j <= Nx2; j++)
       {
          X2[j]  = x2min + (j-3)*(dx2);
          X2p[j] = x2min + (j+0.5-3)*(dx2);
          X2m[j] = x2min + (j-0.5-3)*(dx2);
       }
 
-      for(k = 0; k <= Nx3-0; k++)
+      for(k = 0; k <= Nx3; k++)
       {
          X3[k]  = x3min + (k-3)*(dx3);
          X3p[k] = x3min + (k+0.5-3)*(dx3);
