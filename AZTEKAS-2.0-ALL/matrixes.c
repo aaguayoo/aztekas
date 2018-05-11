@@ -22,7 +22,6 @@
 #include"./Headers/limiters.h"
 #include"./Headers/matrix.h"
 #include"./Headers/vector.h"
-#include"./Headers/param.h"
 
 #define min(a,b) (((a)<(b))?(a):(b))
 #define max(a,b) (((a)>(b))?(a):(b))

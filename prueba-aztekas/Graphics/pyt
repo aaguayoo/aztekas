@@ -11,10 +11,10 @@ import linecache
 from PIL import Image
 
 #Time reading
-time = float(linecache.getline("DATA_$1_2D.dat",2))
+time = float(linecache.getline("data_$1.dat",2))
 
 #Data reading
-xx, yy, n, p, u, v = np.loadtxt("DATA_$1_2D.dat",skiprows=3,unpack=True)
+xx, yy, n, p, u, v = np.loadtxt("data_$1.dat",skiprows=3,unpack=True)
 
 xxneg = -xx
 
@@ -22,19 +22,19 @@ l = len(xx)
 l = np.sqrt(l)
 l = int(l)
 
-n = n.reshape(161,401)
+n = n.reshape(101,401)
 n = n.T
 
-p = p.reshape(161,401)
+p = p.reshape(101,401)
 p = p.T
 
-u = u.reshape(161,401)
+u = u.reshape(101,401)
 u = u.T
 
-v = v.reshape(161,401)
+v = v.reshape(101,401)
 v = v.T
 
-nx = np.linspace(np.min(xx), np.max(xx), 161)
+nx = np.linspace(np.min(xx), np.max(xx), 101)
 ny = np.linspace(np.min(yy), np.max(yy), 401)
 X,Y = np.meshgrid(nx,ny)
 
@@ -47,10 +47,10 @@ plt.ylabel(r'\$z\$',fontsize=12)
 plt.title(r'Time = %.2f s'%time,fontsize=12)
 
 #Logaritmic linspace
-levels = np.linspace(-2.0,2.0,400)
+#levels = np.linspace(-1.0,0.0,400)
 
 #Linear linspace
-#levels = np.linspace(0.0,30.0,400)
+levels = np.linspace(0.49,1.5,400)
 
 #Space between vectors
 qx = 5
@@ -61,8 +61,8 @@ qy = 5
 #cn = plt.contourf(-X,Y,np.log10(n),levels=levels,cmap=plt.cm.gist_heat)
 
 #Jet Colour - Axisymmetric
-cn = plt.contourf(X,Y,np.log10(n),levels=levels,cmap=plt.cm.afmhot)
-cn = plt.contourf(-X,Y,np.log10(n),levels=levels,cmap=plt.cm.afmhot)
+cn = plt.contourf(X,Y,(n),levels=levels,cmap=plt.cm.afmhot)
+cn = plt.contourf(-X,Y,(n),levels=levels,cmap=plt.cm.afmhot)
 
 #Vertical colorbar
 cbarn = plt.colorbar(cn, format="%.2f")

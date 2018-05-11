@@ -27,7 +27,7 @@ void INITIAL(double *dtprint)
    {
       for(i = 0; i <= Nx1; i++)
       {
-         if(X1[i] < x_0)
+         if(X1[i] < 0.5)
          {
             U[c1(0,i)] = nl;
             U[c1(1,i)] = pl;
@@ -43,30 +43,10 @@ void INITIAL(double *dtprint)
    }
    else if(dim == 2)
    {
-   /*
-      FILE *fdata;
-      char test[50];
-      fdata = fopen("./Data2D/DATA_360_2D.dat","r");
-
-      fscanf(fdata,"%s",test);
-      fscanf(fdata,"%lf",&TIME);
-      fscanf(fdata,"%s",test);
-      for(i = 2; i <= Nx1-2; i++)
-      {
-         for(j = 2; j <= Nx2-2; j++)
-         {
-            fscanf(fdata,"%lf %lf %lf %lf %lf %lf",&X1[i],&X2[j],&U[c2(0,i,j)],&U[c2(1,i,j)],&U[c2(2,i,j)],&U[c2(3,i,j)]);
-         }
-      }
-      BOUNDARIES(U);
-
-      fclose(fdata);
-   */
-
       ///////////////////////////
       //--------Jet------------//
       ///////////////////////////
-
+      
       for(i = 0; i <= Nx1; i++)
       {
          for(j = 0; j <= Nx2; j++)
@@ -97,41 +77,52 @@ void INITIAL(double *dtprint)
             }
          }
       }
-
+      
       /////////////////////////////
 
       ///////////////////////////
       //-----Acretion----------//
       ///////////////////////////
-      /*
+/*
       for(i = 0; i <= Nx1; i++)
-      {
+      {   
          for(j = 0; j <= Nx2; j++)
          {
-            double RR = sqrt(X1[i]*X1[i] + X2[j]*X2[j]);
-            double R  = X1[i];
-            double z  = X2[j];
-            double v  = 0.5;
-            double cs = 0.1;
-            double r  = MM/(cs*cs + v*v);
-            double rr = 2*MM;
-            if(RR <= rr)
-            {
-               U[c2(0,i,j)] = 0.0000000001;
-               U[c2(1,i,j)] = cs*cs*U[c2(0,i,j)]*(K-1)/(K*(K-1) - cs*cs*K);
+               U[c2(0,i,j)] = density_0;
+               U[c2(1,i,j)] = pressure_0;
                U[c2(2,i,j)] = 0.0;
                U[c2(3,i,j)] = 0.0;
-            }
-            else
-            {
-               U[c2(0,i,j)] = 0.0000000001;
-               U[c2(1,i,j)] = cs*cs*U[c2(0,i,j)]*(K-1)/(K*(K-1) - cs*cs*K);
-               U[c2(2,i,j)] = -v;
-               U[c2(3,i,j)] = 0.0;
-            }
          }
       }
-      */
+      
+      int jmin;
+      double r, R, z, dummy;
+
+      for(i = 3; i <= Nx1; i++)
+      {   
+         dummy = r_bou*r_bou - X1[i]*X1[i];
+         if (dummy >=0 ) 
+         {
+            jmin = sqrt(dummy)/dx2 + 4;
+         }  
+         else
+         {
+            jmin = 3;
+         }
+                
+         for(j = jmin; j <= Nx2; j++)
+         {
+            R = X1[i];
+            z = X2[j];
+            r = sqrt(R*R + z*z);
+           
+            U[c2(0,i,j)] = density_0;
+            U[c2(1,i,j)] = pressure_0;
+            U[c2(2,i,j)] = velocity_0*(R/r);
+            U[c2(3,i,j)] = velocity_0*(z/r);
+         }
+      }
+*/
       /////////////////////////////
 
       ///////////////////////////
@@ -185,12 +176,12 @@ void INITIAL(double *dtprint)
             }
          }
       }
-      */
-      /////////////////////////////
+   */
+   /////////////////////////////
    }
    else if(dim == 3)
    {
-      for(i = 0; i <= Nx1; i++)
+/*      for(i = 0; i <= Nx1; i++)
       {
          for(j = 0; j <= Nx2; j++)
          {
@@ -215,7 +206,7 @@ void INITIAL(double *dtprint)
             }
          }
       }
-   }
+*/   }
    else
    {
       printf("ERROR: Variable dim distinta de {1,2,3}");

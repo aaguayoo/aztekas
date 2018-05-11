@@ -1,0 +1,33 @@
+% OUTPUT FILE AND DIRECTORY
+outputdirectory = jet/
+outputfile      = data_
+
+% Define domain limits
+x1max = 10.0
+x2max = 20.0
+x3max = 1.0
+x1min = 0.0
+x2min = 0.0
+x3min = 0.0
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Initial conditions %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% JET
+n_jet   = 1.0
+p_jet   = 1.0
+vx1_jet = 0.0
+vx2_jet = 1.0
+vx3_jet = 0.0
+
+% ATMOSPHERE
+n_atm   = 0.5
+p_atm   = 1.0
+vx1_atm = 0.0
+vx2_atm = 0.0
+vx3_atm = 0.0
+
+% JET RADII
+r_jet = 1.0
+z_jet = 1.0

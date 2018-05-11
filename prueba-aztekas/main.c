@@ -21,12 +21,11 @@
 #include<string.h>
 #include"./Headers/main.h"
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
    int itprint;
    double dtprint, tprint;
 
-   //The code needs a paramfile as an argument
    if(argc != 2)
    {
       printf("%s\n","Wrong number of arguments");
@@ -38,8 +37,8 @@ int main(int argc, char *argv[])
    strcpy(paramfile_name, argv[1]);
    read_parameters_file(paramfile_name);
 
-   //Create output directory
-   char create_dir[] = "mkdir -p";
+    // create output directory
+   char create_dir[] = "mkdir -p ";
    strcat(create_dir,outputdirectory);
    int sysret = system(create_dir);
 
@@ -77,5 +76,5 @@ int main(int argc, char *argv[])
    free(X2);
    free(X3);
 
-return 0;
+   return 0;
 }

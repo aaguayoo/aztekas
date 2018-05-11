@@ -16,8 +16,6 @@ double start, delta;
 
 double x1max, x2max, x3max;
 double x1min, x2min, x3min;
-double tmax, timefile;
-double cou, K;
 
 //RIEMANN
 double nl, pl, vx1l, vx2l, vx3l;
