@@ -17,8 +17,8 @@ x2min = 0.0
 x3min = 0.0
 
 % Define mesh size
-Nx1 = 106
-Nx2 = 106
+Nx1 = 206
+Nx2 = 206
 Nx3 = 0
 
 % MAX TIME & PRINT TIME
