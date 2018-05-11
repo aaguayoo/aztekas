@@ -50,7 +50,7 @@ int BOUNDARIES(double *B)
 	 double r, R, z, dummy;
    double pre;
 	    	    
-   for(i = 3; i <= Nx1; i++)
+   for(i = 0; i <= Nx1; i++)
    {	
       dummy = r_bou*r_bou - X1[i]*X1[i];
       if (dummy >=0 ) 
@@ -84,9 +84,9 @@ int BOUNDARIES(double *B)
          {
        	  // set reflexion symmetry along y = 0 (x axis)
             B[c2(n,i,3)] =  B[c2(n,i,4)];
-            B[c2(n,i,2)] =  B[c2(n,i,5)];
-            B[c2(n,i,1)] =  B[c2(n,i,6)];
-            B[c2(n,i,0)] =  B[c2(n,i,7)];
+            B[c2(n,i,2)] =  B[c2(n,i,4)];
+            B[c2(n,i,1)] =  B[c2(n,i,5)];
+            B[c2(n,i,0)] =  B[c2(n,i,6)];
 
 		  // copy values of Nx2-4 cell to all ghost cells above
             B[c2(n,i,Nx2-3)] = B[c2(n,i,Nx2-4)];
@@ -99,9 +99,9 @@ int BOUNDARIES(double *B)
          {
        	  // set reflexion symmetry along x = 0 (y axis)
             B[c2(n,3,j)] = B[c2(n,4,j)];
-            B[c2(n,2,j)] = B[c2(n,5,j)];
-            B[c2(n,1,j)] = B[c2(n,6,j)];
-            B[c2(n,0,j)] = B[c2(n,7,j)];
+            B[c2(n,2,j)] = B[c2(n,4,j)];
+            B[c2(n,1,j)] = B[c2(n,5,j)];
+            B[c2(n,0,j)] = B[c2(n,6,j)];
 
 		  // copy values of Nx1-4 cell to all ghost cells to the right	
             B[c2(n,Nx1-3,j)] = B[c2(n,Nx1-4,j)];
@@ -115,18 +115,18 @@ int BOUNDARIES(double *B)
       for(i = 0; i <= Nx1; i++)
       {
         B[c2(3,i,3)] = 0.0;
-        B[c2(3,i,2)] = -B[c2(3,i,2)];
-        B[c2(3,i,1)] = -B[c2(3,i,1)];
-        B[c2(3,i,0)] = -B[c2(3,i,0)];
+        B[c2(3,i,2)] = -B[c2(3,i,4)];
+        B[c2(3,i,1)] = -B[c2(3,i,5)];
+        B[c2(3,i,0)] = -B[c2(3,i,6)];
       }
 
     // change sign for vR for ghost cells left of y axis
       for(j = 0; j <= Nx2; j++)
       {
         B[c2(2,3,j)] = 0.0;
-        B[c2(2,2,j)] = -B[c2(2,2,j)];
-        B[c2(2,1,j)] = -B[c2(2,1,j)];
-        B[c2(2,0,j)] = -B[c2(2,0,j)];
+        B[c2(2,2,j)] = -B[c2(2,4,j)];
+        B[c2(2,1,j)] = -B[c2(2,5,j)];
+        B[c2(2,0,j)] = -B[c2(2,6,j)];
       }
    }
 

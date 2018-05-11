@@ -58,8 +58,8 @@ nz = grid_size
 xx = np.arange(0,nx,1)
 zz = np.arange(0,nz,1)
 
-xx = 10.0*xx/nx
-zz = 10.0*zz/nz
+xx = 11.0*xx/nx
+zz = 11.0*zz/nz
 
 den = np.zeros((nx,nz))
 vel = np.zeros((nx,nz))

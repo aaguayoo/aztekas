@@ -98,7 +98,7 @@ void INITIAL(double *dtprint)
     int jmin;
     double r, R, z, dummy;
 
-		for(i = 3; i <= Nx1; i++)
+		for(i = 0; i <= Nx1; i++)
 		{	
 		  dummy = r_bou*r_bou - X1[i]*X1[i];
 		  if (dummy >=0 ) 
