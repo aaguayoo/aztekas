@@ -42,6 +42,7 @@ PARAM += -Dcou=0.5
 
 #####################################
 PARAM += -DK=1.6666666666666666666666
+
 SOURCES = main.c alloc.c array.c mesh.c initial.c \
           timestep.c input.c output.c integration.c flux.c \
           pvrs-rk.c limiters.c matrixes.c boundaries.c \
