@@ -84,44 +84,44 @@ void INITIAL(double *dtprint)
       //-----Acretion----------//
       ///////////////////////////
 
-		for(i = 0; i <= Nx1; i++)
-		{	
-			for(j = 0; j <= Nx2; j++)
-			{
-					U[c2(0,i,j)] = density_0;
-					U[c2(1,i,j)] = pressure_0;
-					U[c2(2,i,j)] = 0.0;
-					U[c2(3,i,j)] = 0.0;
-			}
-		}
-		
-    int jmin;
-    double r, R, z, dummy;
+      for(i = 0; i <= Nx1; i++)
+      {
+         for(j = 0; j <= Nx2; j++)
+         {
+            U[c2(0,i,j)] = density_0;
+            U[c2(1,i,j)] = pressure_0;
+            U[c2(2,i,j)] = 0.0;
+            U[c2(3,i,j)] = 0.0;
+         }
+      }
 
-		for(i = 0; i <= Nx1; i++)
-		{	
-		  dummy = r_bou*r_bou - X1[i]*X1[i];
-		  if (dummy >=0 ) 
-		  {
-		    jmin = sqrt(dummy)/dx2 + 4;
-		  }  
-		  else
-		  {
-		    jmin = 3;
-		  }
-		  		  
-			for(j = jmin; j <= Nx2; j++)
-			{
-			  R = X1[i];
-			  z = X2[j];
-			  r = sqrt(R*R + z*z);
-			  
-				U[c2(0,i,j)] = density_0;
-				U[c2(1,i,j)] = pressure_0;
-				U[c2(2,i,j)] = velocity_0*(R/r);
-				U[c2(3,i,j)] = velocity_0*(z/r);
-			}
-		}
+      int jmin;
+      double r, R, z, dummy;
+
+      for(i = 0; i <= Nx1; i++)
+      {
+         dummy = r_bou*r_bou - X1[i]*X1[i];
+         if (dummy >=0 )
+         {
+            jmin = sqrt(dummy)/dx2 + 4;
+         }
+         else
+         {
+            jmin = 3;
+         }
+
+         for(j = jmin; j <= Nx2; j++)
+         {
+            R = X1[i];
+            z = X2[j];
+            r = sqrt(R*R + z*z);
+
+            U[c2(0,i,j)] = density_0;
+            U[c2(1,i,j)] = pressure_0;
+            U[c2(2,i,j)] = velocity_0*(R/r);
+            U[c2(3,i,j)] = velocity_0*(z/r);
+         }
+      }
 
       /////////////////////////////
 

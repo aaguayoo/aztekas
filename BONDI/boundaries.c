@@ -47,7 +47,7 @@ int BOUNDARIES(double *B)
       ///*---------INJECTION-BOUNDARY-------------*///
       ////////////////////////////////////////////////
       int jmin;
-	   double r, R, z, dummy;
+      double r, R, z, dummy;
       double pre;
 
       for(i = 0; i <= Nx1; i++)
@@ -55,18 +55,18 @@ int BOUNDARIES(double *B)
          dummy = r_bou*r_bou - X1[i]*X1[i];
          if(dummy >=0 )
          {
-		      jmin = sqrt(dummy)/dx2 + 4;
+            jmin = sqrt(dummy)/dx2 + 4;
          }
          else
          {
-		      jmin = 3;
+            jmin = 3;
          }
 
          for(j = jmin; j <= Nx2; j++)
-			{
-		      R = X1[i];
-			   z = X2[j];
-			   r = sqrt(R*R + z*z);
+         {
+            R = X1[i];
+            z = X2[j];
+            r = sqrt(R*R + z*z);
 
             pre = gtheta(R,z);
 
@@ -74,21 +74,21 @@ int BOUNDARIES(double *B)
             U[c2(1,i,j)] = pressure_0;
             U[c2(2,i,j)] = velocity_0*(R/r);
             U[c2(3,i,j)] = velocity_0*(z/r);
-			}
-		}
+         }
+      }
 
-	   // Take care of ghost cells up, down, right and left
+      // Take care of ghost cells up, down, right and left
       for(n = 0; n < eq; n++)
       {
          for(i = 0; i <= Nx1-0; i++)
          {
-       	   // Set reflexion symmetry along y = 0 (x axis)
+             // Set reflexion symmetry along y = 0 (x axis)
             B[c2(n,i,3)] =  B[c2(n,i,4)];
             B[c2(n,i,2)] =  B[c2(n,i,4)];
             B[c2(n,i,1)] =  B[c2(n,i,5)];
             B[c2(n,i,0)] =  B[c2(n,i,6)];
 
-		      // Copy values of Nx2-4 cell to all ghost cells above
+            // Copy values of Nx2-4 cell to all ghost cells above
             B[c2(n,i,Nx2-3)] = B[c2(n,i,Nx2-4)];
             B[c2(n,i,Nx2-2)] = B[c2(n,i,Nx2-4)];
             B[c2(n,i,Nx2-1)] = B[c2(n,i,Nx2-4)];
@@ -97,13 +97,13 @@ int BOUNDARIES(double *B)
 
          for(j = 0; j <= Nx2; j++)
          {
-       	   // Set reflexion symmetry along x = 0 (y axis)
+             // Set reflexion symmetry along x = 0 (y axis)
             B[c2(n,3,j)] = B[c2(n,4,j)];
             B[c2(n,2,j)] = B[c2(n,4,j)];
             B[c2(n,1,j)] = B[c2(n,5,j)];
             B[c2(n,0,j)] = B[c2(n,6,j)];
 
-		      // Copy values of Nx1-4 cell to all ghost cells to the right
+            // Copy values of Nx1-4 cell to all ghost cells to the right
             B[c2(n,Nx1-3,j)] = B[c2(n,Nx1-4,j)];
             B[c2(n,Nx1-2,j)] = B[c2(n,Nx1-4,j)];
             B[c2(n,Nx1-1,j)] = B[c2(n,Nx1-4,j)];
