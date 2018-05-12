@@ -43,52 +43,52 @@ int BOUNDARIES(double *B)
    }
    else if(dim == 2)
    {
-   ////////////////////////////////////////////////
-   ///*---------INJECTION-BOUNDARY-------------*///
-   ////////////////////////////////////////////////
-   int jmin;
-	 double r, R, z, dummy;
-   double pre;
-	    	    
-   for(i = 0; i <= Nx1; i++)
-   {	
-      dummy = r_bou*r_bou - X1[i]*X1[i];
-      if (dummy >=0 ) 
+      ////////////////////////////////////////////////
+      ///*---------INJECTION-BOUNDARY-------------*///
+      ////////////////////////////////////////////////
+      int jmin;
+	   double r, R, z, dummy;
+      double pre;
+
+      for(i = 0; i <= Nx1; i++)
       {
-		     jmin = sqrt(dummy)/dx2 + 4;
-      }  
-      else
-      {
-		     jmin = 3;
-      }
-		  		  
-      for(j = jmin; j <= Nx2; j++)
+         dummy = r_bou*r_bou - X1[i]*X1[i];
+         if(dummy >=0 )
+         {
+		      jmin = sqrt(dummy)/dx2 + 4;
+         }
+         else
+         {
+		      jmin = 3;
+         }
+
+         for(j = jmin; j <= Nx2; j++)
 			{
-		     R = X1[i];
+		      R = X1[i];
 			   z = X2[j];
 			   r = sqrt(R*R + z*z);
-			  
-      pre = gtheta(R,z);
-			  
-      U[c2(0,i,j)] = pre*density_0;
-      U[c2(1,i,j)] = pressure_0;
-      U[c2(2,i,j)] = velocity_0*(R/r);
-      U[c2(3,i,j)] = velocity_0*(z/r);
+
+            pre = gtheta(R,z);
+
+            U[c2(0,i,j)] = pre*density_0;
+            U[c2(1,i,j)] = pressure_0;
+            U[c2(2,i,j)] = velocity_0*(R/r);
+            U[c2(3,i,j)] = velocity_0*(z/r);
 			}
 		}
-   
-	  // take care of ghost cells up, down, right and left
+
+	   // Take care of ghost cells up, down, right and left
       for(n = 0; n < eq; n++)
       {
          for(i = 0; i <= Nx1-0; i++)
          {
-       	  // set reflexion symmetry along y = 0 (x axis)
+       	   // Set reflexion symmetry along y = 0 (x axis)
             B[c2(n,i,3)] =  B[c2(n,i,4)];
             B[c2(n,i,2)] =  B[c2(n,i,4)];
             B[c2(n,i,1)] =  B[c2(n,i,5)];
             B[c2(n,i,0)] =  B[c2(n,i,6)];
 
-		  // copy values of Nx2-4 cell to all ghost cells above
+		      // Copy values of Nx2-4 cell to all ghost cells above
             B[c2(n,i,Nx2-3)] = B[c2(n,i,Nx2-4)];
             B[c2(n,i,Nx2-2)] = B[c2(n,i,Nx2-4)];
             B[c2(n,i,Nx2-1)] = B[c2(n,i,Nx2-4)];
@@ -97,13 +97,13 @@ int BOUNDARIES(double *B)
 
          for(j = 0; j <= Nx2; j++)
          {
-       	  // set reflexion symmetry along x = 0 (y axis)
+       	   // Set reflexion symmetry along x = 0 (y axis)
             B[c2(n,3,j)] = B[c2(n,4,j)];
             B[c2(n,2,j)] = B[c2(n,4,j)];
             B[c2(n,1,j)] = B[c2(n,5,j)];
             B[c2(n,0,j)] = B[c2(n,6,j)];
 
-		  // copy values of Nx1-4 cell to all ghost cells to the right	
+		      // Copy values of Nx1-4 cell to all ghost cells to the right
             B[c2(n,Nx1-3,j)] = B[c2(n,Nx1-4,j)];
             B[c2(n,Nx1-2,j)] = B[c2(n,Nx1-4,j)];
             B[c2(n,Nx1-1,j)] = B[c2(n,Nx1-4,j)];
@@ -111,22 +111,22 @@ int BOUNDARIES(double *B)
          }
       }
 
-    // change sign for vz for ghost cells below x axis
+      // Change sign for vz for ghost cells below x axis
       for(i = 0; i <= Nx1; i++)
       {
-        B[c2(3,i,3)] = 0.0;
-        B[c2(3,i,2)] = -B[c2(3,i,4)];
-        B[c2(3,i,1)] = -B[c2(3,i,5)];
-        B[c2(3,i,0)] = -B[c2(3,i,6)];
+         B[c2(3,i,3)] = 0.0;
+         B[c2(3,i,2)] = -B[c2(3,i,4)];
+         B[c2(3,i,1)] = -B[c2(3,i,5)];
+         B[c2(3,i,0)] = -B[c2(3,i,6)];
       }
 
-    // change sign for vR for ghost cells left of y axis
+      // Change sign for vR for ghost cells left of y axis
       for(j = 0; j <= Nx2; j++)
       {
-        B[c2(2,3,j)] = 0.0;
-        B[c2(2,2,j)] = -B[c2(2,4,j)];
-        B[c2(2,1,j)] = -B[c2(2,5,j)];
-        B[c2(2,0,j)] = -B[c2(2,6,j)];
+         B[c2(2,3,j)] = 0.0;
+         B[c2(2,2,j)] = -B[c2(2,4,j)];
+         B[c2(2,1,j)] = -B[c2(2,5,j)];
+         B[c2(2,0,j)] = -B[c2(2,6,j)];
       }
    }
 
@@ -181,16 +181,16 @@ int BOUNDARIES(double *B)
    return 0;
 }
 
-double gtheta(double R, double z) 
+double gtheta(double R, double z)
 {
-   double theta;   
-   
+   double theta;
+
    if( rho_boundary == 1)
    // constant profile
    {
       return 1.0;
    }
-   
+
    if(R > 0 && z >= 0)
    {
       theta = atan(z/R);
@@ -210,7 +210,7 @@ double gtheta(double R, double z)
    else if(R >  0 && z < 0)
    {
       theta = atan(z/R) + 2.*M_PI;
-   }			  
+   }
 
    if( rho_boundary == 2)
    // gaussian profile for the density at the injection boundary
@@ -221,7 +221,7 @@ double gtheta(double R, double z)
    // step profile for the density at the injection boundary
    {
       return 1.0/(exp((theta - theta_0)/delta_theta) + 1.);
-   }   
-   
+   }
+
    return 1.0;
 }
