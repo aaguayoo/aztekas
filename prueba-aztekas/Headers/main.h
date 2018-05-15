@@ -37,6 +37,7 @@ double density_0, pressure_0, velocity_0;
 
 //Paramfile
 char paramfile_name[50], outputdirectory[50], outputfile[50];
+int read_parameters_file(char const *paramfile_name);
 
 typedef struct
 {
