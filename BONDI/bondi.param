@@ -1,35 +1,42 @@
 % OUTPUT FILE AND DIRECTORY
-outputdirectory = bondi/
+outputdirectory = ./test/
 outputfile      = data_
 
+% RESTART SIMULATION (1 -> true, 0 -> false)
+restart_simulation = 1
+restartfile = test/data_8.dat
+restart_filecount = 666
+
 % DIMENSION PARAMETERS (num of equations, dim of graf, physical dimension)
-%eq   = 4
-%graf = 2
-%dim  = 2
-%alfa = 1
+eq   = 4
+graf = 2
+dim  = 2
+alfa = 1
 
 % Define domain limits
-x1max = 10.0
-x2max = 10.0
+x1max = 10.1
+x2max = 10.1
 x3max = 1.0
 x1min = 0.0
 x2min = 0.0
 x3min = 0.0
 
 % Define mesh size
-Nx1 = 106
-Nx2 = 106
+Nx1 = 306
+Nx2 = 306
 Nx3 = 0
 
 % MAX TIME & PRINT TIME
-tmax =  51.0
-timefile = 10.0
+tmax =  83.0
+timefile = 1.0
 
 % COURANT NUMBER
 cou = 0.5
 
 % POLYTROPIC INDEX
-K = 1.333333333333
+%K = 1.333333333333
+%K = 1.666666666666
+K  = 1.0000000001
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Boundary conditions %%%%%
@@ -42,8 +49,8 @@ r_int = 0.10
 % DENSITY PROFILE
 % (theta_0 should be in units of pi, delta_theta is the width of the step function)
 % 1 = const., 2 = gaussian, 3 = step function
-rho_boundary = 3 
-theta_0 = 0.6
+rho_boundary = 2
+theta_0 = 0.16666666666666666667
 delta_theta = 0.02
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -51,14 +58,14 @@ delta_theta = 0.02
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % BONDI ACCRETION (Gamma = 1, r0 = 10 r_B)
-%density_0 =  1.1051141
-%pressure_0 = 1.1051141
-%velocity_0 = -0.0101385
+density_0 =  1.1051141
+pressure_0 = 1.1051141
+velocity_0 = -0.101385
 
 % BONDI ACCRETION (Gamma = 4/3, r0 = 10 r_B)
-density_0 =  1.1033484
-pressure_0 = 0.8550893
-velocity_0 = -0.0064087 
+%density_0 =  1.1033484
+%pressure_0 = 0.8550893
+%velocity_0 = -0.0064087 
 
 % BONDI ACCRETION (Gamma = 5/3, r0 = 10 r_B)
 %density_0 =  1.1016569

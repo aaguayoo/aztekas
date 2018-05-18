@@ -17,6 +17,7 @@ double dt, time;
 double start, delta;
 
 //int eq, graf, dim, alfa;
+int restart_simulation, restart_filecount;
 int Nx1, Nx2, Nx3;
 double x1max, x2max, x3max, x1min, x2min, x3min;
 double tmax, timefile;
@@ -30,6 +31,7 @@ double density_0, pressure_0, velocity_0;
 double nl, nr, pl, pr, vx1l, vx1r, vx2l, vx2r, vx3l, vx3r;
 
 char paramfile_name[50], outputdirectory[50], outputfile[50];
+char restartfile[50];
 
 typedef struct
 {
@@ -87,7 +89,9 @@ void allocateArray();
 
 int MESH(); 
 
-void INITIAL(double *dtprint);
+void RESTART();
+
+void INITIAL();
 
 double TIMESTEP();
 

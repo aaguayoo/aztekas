@@ -68,12 +68,12 @@ int BOUNDARIES(double *B)
 			   z = X2[j];
 			   r = sqrt(R*R + z*z);
 			  
-      pre = gtheta(R,z);
+         pre = gtheta(R,z);
 			  
-      U[c2(0,i,j)] = pre*density_0;
-      U[c2(1,i,j)] = pressure_0;
-      U[c2(2,i,j)] = velocity_0*(R/r);
-      U[c2(3,i,j)] = velocity_0*(z/r);
+         U[c2(0,i,j)] = pre*density_0;
+         U[c2(1,i,j)] = pressure_0;
+         U[c2(2,i,j)] = velocity_0*(R/r);
+         U[c2(3,i,j)] = velocity_0*(z/r);
 			}
 		}
    

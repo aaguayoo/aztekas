@@ -47,14 +47,35 @@ int main(int argc, char* argv[])
 
    //We set the mesh func_planarMESH.c
    MESH();
+   
+   
+   // time interval between data dumps
+   dtprint = timefile;
 
    //We set the initial parameters func_planarINITIAL.c
-   INITIAL(&dtprint);
-   tprint  = 0.0; //Initialize printing parameter
-   itprint = 0;   //Initialize file numeration
-   time    = 0.0; //Initialize time
-   dt      = 0.1; //Initialize dt
+   if ( restart_simulation ) 
+   {
+      RESTART();
+      
+      //Initialize printing parameter   
+      tprint  = time; 
+      //Initialize file numeration
+      itprint = restart_filecount;
+   }
+   else
+   {
+      INITIAL();
+      
+      //Initialize printing parameter   
+      tprint  = 0.0; 
+      //Initialize file numeration
+      itprint = 0;   
+   }
+   
+   printf("dump : %i\n", itprint);
 
+   printf("time : %f\n",time) ;   
+   
    start = omp_get_wtime();
    while(time <= tmax)
    {

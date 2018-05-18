@@ -19,9 +19,82 @@
 #include<string.h>
 #include"./Headers/main.h"
 
-void INITIAL(double *dtprint)
+void RESTART()
+{
+   FILE *file;
+   int i, j, k, idum;
+   double dum;
+   char line[100];
+   
+   //Initialize dt
+   dt = 0.1; 
+   
+   file = fopen(restartfile,"r");
+   
+   // Skip first line
+   idum = fscanf(file,"%s\n",line) ;
+
+   // Read time
+   idum = fscanf(file,"%lf\n",&time) ;
+
+   printf("%i %f\n",idum,time) ;
+
+   // Skip third line   
+   idum = fscanf(file,"%s\n",line) ;
+
+   // Read rest of file an initialize variables      
+   if(dim == 1)
+   {
+     for(i = 3; i <= Nx1-3; i++)
+     {
+        idum = fscanf(file,"%lf %lf %lf %lf\n",&dum,\
+               &U[c1(0,i)],&U[c1(1,i)],&U[c1(2,i)]);
+     }   
+   }
+   if(dim == 2)
+   {   
+     for(i = 3; i <= Nx1-3; i++)
+  	 {
+        for(j = 3; j <= Nx2-3; j++)
+        {
+            idum = fscanf(file,"%lf %lf %lf %lf %lf %lf\n",&dum,&dum,\
+                &U[c2(0,i,j)],&U[c2(1,i,j)],&U[c2(2,i,j)],&U[c2(3,i,j)]);
+        }
+     }
+   }
+   if(dim == 3)
+   {
+     for(i = 3; i <= Nx1-3; i++)
+  	 {
+        for(j = 3; j <= Nx2-3; j++)
+        {
+           for(k = 3; k <= Nx3-3; k++)
+           {
+               idum = fscanf(file,"%lf %lf %lf %lf %lf %lf %lf %lf\n",\
+                      &dum,&dum,&dum,\
+                      &U[c3(0,i,j,k)],&U[c3(1,i,j,k)],\
+                      &U[c3(2,i,j,k)],&U[c3(3,i,j,k)],&U[c3(4,i,j,k)]);
+           }    
+        }
+     }   
+   }
+
+   // CALLING BOUNDARIES TO GET GHOST CELLS RIGHT
+   BOUNDARIES(U);
+
+   fclose(file);
+}
+
+void INITIAL()
 {
    int n, i, j, k;
+   
+   //Initialize time
+   time    = 0.0; 
+   
+   //Initialize dt
+   dt      = 0.1; 
+   
 
    if(dim == 1)
    {
@@ -211,6 +284,4 @@ void INITIAL(double *dtprint)
    {
       printf("ERROR: Variable dim distinta de {1,2,3}");
    }
-
-   *dtprint = timefile;
 }

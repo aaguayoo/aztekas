@@ -65,6 +65,22 @@ int read_parameters_file(char const *paramfile_name)
             {
                strcpy(outputfile,t_value);
             }
+
+            if(strcmp(t_key,"restart_simulation")==0)
+            {
+               restart_simulation = atoi(t_value);
+            }
+
+            if(strcmp(t_key,"restartfile")==0)
+            {
+               strcpy(restartfile,t_value);
+            }
+
+            if(strcmp(t_key,"restart_filecount")==0)
+            {
+               restart_filecount = atoi(t_value);
+            }
+
 /*
             if(strcmp(t_key,"eq")==0)
             {
