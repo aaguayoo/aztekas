@@ -25,8 +25,10 @@ double cou, K;
 
 int rho_boundary;
 double r_bou, r_int;
-double theta_f, theta_0, delta_theta;
+double theta_f, theta_0, delta_theta, stag, inv_s3;
 double density_0, pressure_0, velocity_0;
+
+double alpha_B;
 
 double nl, nr, pl, pr, vx1l, vx1r, vx2l, vx2r, vx3l, vx3r;
 

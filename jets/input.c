@@ -185,6 +185,7 @@ int read_parameters_file(char const *paramfile_name)
             if(strcmp(t_key,"theta_f")==0)
             {
                theta_f = atof(t_value);
+               // cos(th_0) = sqrt((1+2s^3/r^3)/3)
             }
 
             if(strcmp(t_key,"theta_0")==0)
@@ -195,6 +196,15 @@ int read_parameters_file(char const *paramfile_name)
             if(strcmp(t_key,"delta_theta")==0)
             {
                delta_theta = atof(t_value);
+            }
+
+            if(strcmp(t_key,"stag")==0)
+            {
+               stag = atof(t_value);
+               inv_s3 = 1./pow(stag,3) ;
+               // cos(th_0) = sqrt((1+2s^3/r^3)/3)
+               // taking r_0 = 10
+               theta_f = acos(sqrt((1.+2.e-3*pow(stag,3))/3.)) ;
             }
 
             if(strcmp(t_key,"density_0")==0)

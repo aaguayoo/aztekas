@@ -48,7 +48,7 @@ int BOUNDARIES(double *B)
    ////////////////////////////////////////////////
    int imin, jmin;
 	 double r, R, z, dummy;
-   double pre;
+   double pre, inv_r3;
    
    //imin = r_bou*sin(theta_f)/dx1 + 4 ;
    imin = 3;
@@ -71,12 +71,13 @@ int BOUNDARIES(double *B)
 			   z = X2[j];
 			   r = sqrt(R*R + z*z);
 			  
-         pre = gtheta(R,z);
+         //pre = gtheta(R,z);
+         inv_r3 = 1./pow(r,3) ;
 			  
-         U[c2(0,i,j)] = pre*density_0;
+         U[c2(0,i,j)] = density_0;
          U[c2(1,i,j)] = pressure_0;
-         U[c2(2,i,j)] = velocity_0*(R/r);
-         U[c2(3,i,j)] = velocity_0*(z/r);
+         U[c2(2,i,j)] = -alpha_B*velocity_0*R*(inv_r3 + 0.5*inv_s3);
+         U[c2(3,i,j)] = -alpha_B*velocity_0*z*(inv_r3 - inv_s3);
 			}
 		}
    
