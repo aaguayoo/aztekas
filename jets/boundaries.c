@@ -87,10 +87,11 @@ int BOUNDARIES(double *B)
          for(i = 0; i <= Nx1-0; i++)
          {
        	  // set reflexion symmetry along y = 0 (x axis)
-            B[c2(n,i,3)] =  B[c2(n,i,4)];
-            B[c2(n,i,2)] =  B[c2(n,i,5)];
-            B[c2(n,i,1)] =  B[c2(n,i,6)];
-            B[c2(n,i,0)] =  B[c2(n,i,7)];
+            B[c2(n,i,2)] =  B[c2(n,i,3)];
+            B[c2(n,i,1)] =  B[c2(n,i,4)];
+            B[c2(n,i,0)] =  B[c2(n,i,5)];
+
+            B[c2(n,i,3)] = 0.5*(B[c2(n,i,2)] + B[c2(n,i,4)])
 
 		  // copy values of Nx2-4 cell to all ghost cells above
             B[c2(n,i,Nx2-3)] = B[c2(n,i,Nx2-4)];
@@ -102,10 +103,11 @@ int BOUNDARIES(double *B)
          for(j = 0; j <= Nx2; j++)
          {
        	  // set reflexion symmetry along x = 0 (y axis)
-            B[c2(n,3,j)] = B[c2(n,4,j)];
-            B[c2(n,2,j)] = B[c2(n,5,j)];
-            B[c2(n,1,j)] = B[c2(n,6,j)];
-            B[c2(n,0,j)] = B[c2(n,7,j)];
+            B[c2(n,2,j)] = B[c2(n,4,j)];
+            B[c2(n,1,j)] = B[c2(n,5,j)];
+            B[c2(n,0,j)] = B[c2(n,6,j)];
+
+            B[c2(n,3,j)] = 0.5*(B[c2(n,2,j)] + B[c2(n,4,j)])
 
 		  // copy values of Nx1-4 cell to all ghost cells to the right	
             B[c2(n,Nx1-3,j)] = B[c2(n,Nx1-4,j)];
