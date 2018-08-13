@@ -120,19 +120,21 @@ int BOUNDARIES(double *B)
     // change sign for vz for ghost cells below x axis
       for(i = 0; i <= Nx1; i++)
       {
-        B[c2(3,i,3)] = 0.0;
         B[c2(3,i,2)] = -B[c2(3,i,2)];
         B[c2(3,i,1)] = -B[c2(3,i,1)];
         B[c2(3,i,0)] = -B[c2(3,i,0)];
+
+        B[c2(3,i,3)] = 0.5*(B[c2(3,i,2)] + B[c2(3,i,4)])
       }
 
     // change sign for vR for ghost cells left of y axis
       for(j = 0; j <= Nx2; j++)
       {
-        B[c2(2,3,j)] = 0.0;
         B[c2(2,2,j)] = -B[c2(2,2,j)];
         B[c2(2,1,j)] = -B[c2(2,1,j)];
         B[c2(2,0,j)] = -B[c2(2,0,j)];
+
+        B[c2(2,3,j)] = 0.5*(B[c2(2,2,j)] + B[c2(2,4,j)])
       }
    }
 
