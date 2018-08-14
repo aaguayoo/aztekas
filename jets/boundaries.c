@@ -103,9 +103,9 @@ int BOUNDARIES(double *B)
          for(j = 0; j <= Nx2; j++)
          {
        	  // set reflexion symmetry along x = 0 (y axis)
-            B[c2(n,2,j)] = B[c2(n,4,j)];
-            B[c2(n,1,j)] = B[c2(n,5,j)];
-            B[c2(n,0,j)] = B[c2(n,6,j)];
+            B[c2(n,2,j)] = B[c2(n,3,j)];
+            B[c2(n,1,j)] = B[c2(n,4,j)];
+            B[c2(n,0,j)] = B[c2(n,5,j)];
 
             B[c2(n,3,j)] = 0.5*(B[c2(n,2,j)] + B[c2(n,4,j)])
 
