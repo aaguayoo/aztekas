@@ -34,6 +34,8 @@ void INITIAL(double *dtprint)
       case 0:
          printf("Custom problem in %dD\n",dim);
          printf("Press enter to continue\n");
+         getchar();
+         INIT_CUSTOM();
       break;
       case 1: //Riemann problem
          printf("Testing Riemann problem in %dD\n",dim);
