@@ -28,7 +28,7 @@ void OUTFLOW(double *B)
    {
       for(n = 0; n < eq; n++)
       {
-         for(cell = 0; cell < gc; cell++)
+         for(cell = gc-1; cell = 0; cell++)
          {
             if(alfa > 0)
             {
@@ -187,6 +187,7 @@ void REFLECTION(double *B, int r, int l, int u, int d, int f, int b)
                B[c2(3,i,cell)] = -B[c2(3,i,2*gc-cell)];
                B[c2(3,i,gc)] = 0.0;
             }
+
             if(u == 1)
             {
                for(n = 0; n < eq; n++)
@@ -214,6 +215,7 @@ void REFLECTION(double *B, int r, int l, int u, int d, int f, int b)
                B[c2(2,cell,j)] = -B[c2(2,2*gc-cell,j)];
                B[c2(2,gc,j)] = 0.0;
             }
+
             if(r == 1)
             {
                for(n = 0; n < eq; n++)
@@ -277,15 +279,15 @@ void IN_OUT_BOUND(double *B)
          r = X1[i];
          if(r > r_out)
          {
-            U[c1(0,i)] = density_0;
-            U[c1(1,i)] = pressure_0;
-            U[c1(2,i)] = velocity_0;
+            B[c1(0,i)] = density_0;
+            B[c1(1,i)] = pressure_0;
+            B[c1(2,i)] = velocity_0;
          }
          else if(r < r_in)
          {
-            U[c1(0,i)] = density_0;
-            U[c1(1,i)] = pressure_0;
-            U[c1(2,i)] = 0.0; 
+            B[c1(0,i)] = density_0;
+            B[c1(1,i)] = pressure_0;
+            B[c1(2,i)] = 0.0; 
          }
       }
    }
@@ -302,17 +304,17 @@ void IN_OUT_BOUND(double *B)
 
             if(r > r_out)
             {
-               U[c2(0,i,j)] = density_0;
-               U[c2(1,i,j)] = pressure_0;
-               U[c2(2,i,j)] = velocity_0*(x1/r);
-               U[c2(3,i,j)] = velocity_0*(x2/r);
+               B[c2(0,i,j)] = density_0;
+               B[c2(1,i,j)] = pressure_0;
+               B[c2(2,i,j)] = velocity_0*(x1/r);
+               B[c2(3,i,j)] = velocity_0*(x2/r);
             }
             else if(r < r_in)
             {
-               U[c2(0,i,j)] = density_0;
-               U[c2(1,i,j)] = pressure_0;
-               U[c2(2,i,j)] = 0.0;
-               U[c2(3,i,j)] = 0.0;
+               B[c2(0,i,j)] = density_0;
+               B[c2(1,i,j)] = pressure_0;
+               B[c2(2,i,j)] = 0.0;
+               B[c2(3,i,j)] = 0.0;
             }
          }
       }

@@ -71,7 +71,6 @@ double TIMESTEP()
    }
 
    dt = cou*dtmin;
-   printf("%e\n",dt);
 
    return dt;
 }

@@ -88,7 +88,7 @@ endif
 # Time parameters
 #####################################
 
-PARAM += -Dtmax=100.0
+PARAM += -Dtmax=300.0
 PARAM += -Dtimefile=1.0
 PARAM += -Dcou=0.5
 

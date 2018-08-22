@@ -1,5 +1,5 @@
 % OUTPUT FILE AND DIRECTORY
-outputdirectory = DATA/sph-acc/
+outputdirectory = DATA/sph-acc/bondi/
 outputfile      = data_
 
 % RESTART SIMULATION (1 -> true, 0 -> false)
@@ -9,8 +9,9 @@ restart_filecount = 18
 
 % Define mesh
 
-Nx1 = 400
-Nx2 = 400
+Nx1 = 200
+Nx2 = 200
+Nx3 = 0
 
 % Define domain limits
 %x1max = 40.38
