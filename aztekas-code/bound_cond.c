@@ -282,7 +282,7 @@ void IN_OUT_BOUND(double *B)
       for(i = 0; i <= Nx1; i++)
       {
          r = X1[i];
-         r_in = X1[gc+2];
+         r_in = X1[gc+3];
 
          if(r > r_out)
          {
