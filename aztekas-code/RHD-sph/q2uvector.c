@@ -29,16 +29,29 @@ int funct_Q2U(double *a, double *uu)
          x2 = 0;
          x3 = 0;
 
-         SS = (pow(m,2.0)*pow(x1,3.0)+(pow(o,2.0)+pow(n,2.0))*x1+2*MM*pow(o,2.0)+2*MM*pow(n,2.0))/(pow(x1,3.0)+2*MM*pow(x1,2.0));
+         SS = ((pow(m,2.0)*pow(x1,2.0)+pow(n,2.0))*sin(x2)+pow(o,2.0))/(pow(x1,2.0)*sin(x2));
 
          theta_0 = 0.0;
          f = 2.0;
 
-         h   = 1.0;
+         while (fabs(f) > 0.0000001)
+         {
+            h    = 1.0 + (K / (K - 1.0)) * theta_0;
+            lor  = sqrt(1.0 + SS / pow(D*h,2.0));
+            derh = K / (K - 1.0);
+
+            f    = h * lor - (theta_0 / lor) - (t / D) - 1.0;
+            derf = (1.0 / lor) * (derh - 1.0 - theta_0 * ((lor * lor - 1.0) / (lor * lor)) * (derh / h));
+
+            theta = theta_0 - f / derf;
+            theta_0 = theta;
+         }
+
+         h   = 1.0 + (K / (K - 1.0)) * theta_0;
          lor  = sqrt(1.0 + SS / pow(D*h,2.0));
 
          a[c1(0,i)] = D / lor;
-         a[c1(1,i)] = 0.0;
+         a[c1(1,i)] = D*h*lor - t - D;
          a[c1(2,i)] = m / (D * h * lor);
       }
    }
@@ -58,16 +71,29 @@ int funct_Q2U(double *a, double *uu)
             x2 = X2[j];
             x3 = 0;
 
-            SS = (pow(m,2.0)*pow(x1,3.0)+(pow(o,2.0)+pow(n,2.0))*x1+2*MM*pow(o,2.0)+2*MM*pow(n,2.0))/(pow(x1,3.0)+2*MM*pow(x1,2.0));
+            SS = ((pow(m,2.0)*pow(x1,2.0)+pow(n,2.0))*sin(x2)+pow(o,2.0))/(pow(x1,2.0)*sin(x2));
 
             theta_0 = 0.0;
             f = 2.0;
 
-            h   = 1.0;
+            while (fabs(f) > 0.000001)
+            {
+               h    = 1.0 + (K / (K - 1.0)) * theta_0;
+               lor  = sqrt(1.0 + SS / pow(D*h,2.0));
+               derh = K / (K - 1.0);
+
+               f    = h * lor - (theta_0 / lor) - (t / D) - 1.0;
+               derf = (1.0 / lor) * (derh - 1.0 - theta_0 * ((lor * lor - 1.0) / (lor * lor)) * (derh / h));
+
+               theta = theta_0 - f / derf;
+               theta_0 = theta;
+            }
+
+            h   = 1.0 + (K / (K - 1.0)) * theta;
             lor  = sqrt(1.0 + SS / pow(D*h,2.0));
 
             a[c2(0,i,j)] = D / lor;
-            a[c2(1,i,j)] = 0.0;
+            a[c2(1,i,j)] = D*h*lor - t - D;
             a[c2(2,i,j)] = m / (D * h * lor);
             a[c2(3,i,j)] = n / (D * h * lor);
          }
@@ -91,16 +117,29 @@ int funct_Q2U(double *a, double *uu)
                x2 = X2[j];
                x3 = X3[k];
 
-               SS = (pow(m,2.0)*pow(x1,3.0)+(pow(o,2.0)+pow(n,2.0))*x1+2*MM*pow(o,2.0)+2*MM*pow(n,2.0))/(pow(x1,3.0)+2*MM*pow(x1,2.0));
+               SS = ((pow(m,2.0)*pow(x1,2.0)+pow(n,2.0))*sin(x2)+pow(o,2.0))/(pow(x1,2.0)*sin(x2));
 
                theta_0 = 0.0;
                f = 2.0;
 
-               h   = 1.0;
+               while (fabs(f) > 0.000001)
+               {
+                  h    = 1.0 + (K / (K - 1.0)) * theta_0;
+                  lor  = sqrt(1.0 + SS / pow(D*h,2.0));
+                  derh = K / (K - 1.0);
+
+                  f    = h * lor - (theta_0 / lor) - (t / D) - 1.0;
+                  derf = (1.0 / lor) * (derh - 1.0 - theta_0 * ((lor * lor - 1.0) / (lor * lor)) * (derh / h));
+
+                  theta = theta_0 - f / derf;
+                  theta_0 = theta;
+               }
+
+               h   = 1.0 + (K / (K - 1.0)) * theta;
                lor  = sqrt(1.0 + SS / pow(D*h,2.0));
 
                a[c3(0,i,j,k)] = D / lor;
-               a[c3(1,i,j,k)] = 0.0;
+               a[c3(1,i,j,k)] = D*h*lor - t - D;
                a[c3(2,i,j,k)] = m / (D * h * lor);
                a[c3(3,i,j,k)] = n / (D * h * lor);
                a[c3(4,i,j,k)] = o / (D * h * lor);

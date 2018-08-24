@@ -52,10 +52,10 @@ int RK1D(double *u, double *q, double *q1, double *q2, int order)
  
          for(n = 0; n < eq; n++)
          {
-            F[n] = (g1p[2]*v.Fp[n] - g1m[2]*v.Fm[n])/(g[1]*Dx1) - \
+            F[n] = (g1p[2]*v.Fp[n] - g1m[2]*v.Fm[n])/(g[1]*Dx1) + \
             g[2]*v.S[n]/g[1];
          }
-
+            
          switch(order)
          {
             case 1:

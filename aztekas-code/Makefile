@@ -35,7 +35,7 @@ PHY = hd
 
 # -Grav if you want classical gravity
 # nothing if you don't.
-grav = -Grav
+grav = -grav
 
 # Polytropic index
 PARAM += -DK=1.6666666666666666666666
@@ -89,7 +89,7 @@ endif
 #####################################
 
 PARAM += -Dtmax=300.0
-PARAM += -Dtimefile=1.0
+PARAM += -Dtimefile=0.1
 PARAM += -Dcou=0.5
 
 #####################################
@@ -108,10 +108,12 @@ ifeq ($(PHY),hd)
 SOURCES = main.c alloc.c array.c mesh.c initial.c initial_cond.c\
 			 timestep.c input.c output.c integration.c flux.c \
 			 rk-clas.c limiters.c vectors.c boundaries.c bound_cond.c custom.c\
-			 ./HD$(grav)/amatrix.c ./HD$(grav)/dmmatrix.c ./HD$(grav)/dnmatrix.c \
-			 ./HD$(grav)/domatrix.c ./HD$(grav)/q2uvector.c ./HD$(grav)/u2qvector.c \
-			 ./HD$(grav)/qvector.c ./HD$(grav)/fvector.c ./HD$(grav)/gvector.c \
-			 ./HD$(grav)/hvector.c ./HD$(grav)/svector.c ./HD$(grav)/gauge.c 
+			 ./HD-$(COORD)$(grav)/amatrix.c ./HD-$(COORD)$(grav)/dmmatrix.c\
+			 ./HD-$(COORD)$(grav)/dnmatrix.c ./HD-$(COORD)$(grav)/domatrix.c \
+			 ./HD-$(COORD)$(grav)/q2uvector.c ./HD-$(COORD)$(grav)/u2qvector.c \
+			 ./HD-$(COORD)$(grav)/qvector.c ./HD-$(COORD)$(grav)/fvector.c \
+			 ./HD-$(COORD)$(grav)/gvector.c ./HD-$(COORD)$(grav)/hvector.c \
+			 ./HD-$(COORD)$(grav)/svector.c ./HD-$(COORD)$(grav)/gauge.c 
 endif
 
 ifeq ($(PHY),rhd)

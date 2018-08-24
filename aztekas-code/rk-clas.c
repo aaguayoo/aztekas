@@ -47,13 +47,11 @@ int RK1D(double *u, double *q, double *q1, double *q2, int order)
          FLUX1D(&v,&l,I);
  
          GAUGE(g,X1[i],0,0);
-         GAUGE(g1p,X1p[i],0,0);
-         GAUGE(g1m,X1m[i],0,0);
  
          for(n = 0; n < eq; n++)
          {
-            F[n] = (g1p[2]*v.Fp[n] - g1m[2]*v.Fm[n])/(g[1]*Dx1) - \
-            g[2]*v.S[n]/g[1];
+            F[n] = (v.Fp[n] - v.Fm[n])/(g[1]*Dx1) - \
+            v.S[n];
          }
 
          switch(order)
@@ -107,15 +105,11 @@ int RK2D(double *u, double *q, double *q1, double *q2, int order)
             FLUX2D(&v,&l,I);
 
             GAUGE(g,X1[i],X2[j],0);
-            GAUGE(g1p,X1p[i],X2[j],0);
-            GAUGE(g1m,X1m[i],X2[j],0);
-            GAUGE(g2p,X1[i],X2p[j],0);
-            GAUGE(g2m,X1[i],X2m[j],0);
 
             for(n = 0; n < eq; n++)
             {
-               F[n] = (g1p[2]*v.Fp[n] - g1m[2]*v.Fm[n])/(g[2]*Dx1) + \
-               (v.Gp[n] - v.Gm[n])/(Dx2) - \
+               F[n] = (v.Fp[n] - v.Fm[n])/(g[1]*Dx1) + \
+               (v.Gp[n] - v.Gm[n])/(g[2]*Dx2) - \
                v.S[n];
             }
 

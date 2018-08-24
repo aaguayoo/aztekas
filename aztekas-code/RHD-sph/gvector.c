@@ -17,13 +17,13 @@ int funct_G(double *a, double *uu)
    if(dim == 3){w = uu[4];}
 
    R = x1;
-   W = x1/sqrt(-((x1+2*MM)*pow(w,2.0)+(x1+2*MM)*pow(v,2.0)+pow(x1,3.0)*pow(u,2.0)-pow(x1,3.0)-2*MM*pow(x1,2.0))/(x1+2*MM));
-   h = 1;
+   W = x1/sqrt(-(pow(w,2.0)+sin(x2)*pow(v,2.0)+pow(x1,2.0)*sin(x2)*pow(u,2.0)-pow(x1,2.0)*sin(x2))/sin(x2));
+   h = (K*p+(K-1)*n)/((K-1)*n);
 
    a[0] = (W*n*v)/pow(x1,2.0);
    a[1] = ((pow(W,2.0)*h-W)*n*v)/pow(x1,2.0);
    a[2] = (pow(W,2.0)*h*n*u*v)/pow(x1,2.0);
-   a[3] = (pow(W,2.0)*h*n*pow(v,2.0))/pow(x1,2.0);
+   a[3] = (pow(W,2.0)*h*n*pow(v,2.0)+p*pow(x1,2.0))/pow(x1,2.0);
    a[4] = (pow(W,2.0)*h*n*v*w)/pow(x1,2.0);
 
    return 0;

@@ -28,7 +28,7 @@ void OUTFLOW(double *B)
    {
       for(n = 0; n < eq; n++)
       {
-         for(cell = gc-1; cell = 0; cell++)
+         for(cell = 0; cell < gc; cell++)
          {
             if(alfa > 0)
             {
@@ -46,6 +46,11 @@ void OUTFLOW(double *B)
       {
          for(i = 0; i <= Nx1-0; i++)
          {
+            if(alfa == 2)
+            {
+               B[c2(n,i,gc)] = B[c2(n,i,gc+1)];
+               B[c2(n,i,Nx2-gc)] = B[c2(n,i,Nx2-gc-1)];
+            }
             for(cell = 0; cell < gc; cell++)
             {
                B[c2(n,i,cell)] = B[c2(n,i,gc)];
@@ -277,6 +282,8 @@ void IN_OUT_BOUND(double *B)
       for(i = 0; i <= Nx1; i++)
       {
          r = X1[i];
+         r_in = X1[gc+2];
+
          if(r > r_out)
          {
             B[c1(0,i)] = density_0;
@@ -299,22 +306,47 @@ void IN_OUT_BOUND(double *B)
          {
             x1 = X1[i];
             x2 = X2[j];
-            r = sqrt(x1*x1 + x2*x2);
-            r_in = sqrt(X1[gc+2]*X1[gc+2] + X2[gc+2]*X2[gc+2]);
 
-            if(r > r_out)
+            // Cart or Cyl
+            if (alfa <= 1)
             {
-               B[c2(0,i,j)] = density_0;
-               B[c2(1,i,j)] = pressure_0;
-               B[c2(2,i,j)] = velocity_0*(x1/r);
-               B[c2(3,i,j)] = velocity_0*(x2/r);
+               r = sqrt(x1*x1 + x2*x2);
+               r_in = sqrt(X1[gc+2]*X1[gc+2] + X2[gc+2]*X2[gc+2]);
+
+               if(r > r_out)
+               {
+                  B[c2(0,i,j)] = density_0;
+                  B[c2(1,i,j)] = pressure_0;
+                  B[c2(2,i,j)] = velocity_0*(x1/r);
+                  B[c2(3,i,j)] = velocity_0*(x2/r);
+               }
+               else if(r < r_in)
+               {
+                  B[c2(0,i,j)] = density_0;
+                  B[c2(1,i,j)] = pressure_0;
+                  B[c2(2,i,j)] = 0.0;
+                  B[c2(3,i,j)] = 0.0;
+               }
             }
-            else if(r < r_in)
+            else if (alfa == 2)
             {
-               B[c2(0,i,j)] = density_0;
-               B[c2(1,i,j)] = pressure_0;
-               B[c2(2,i,j)] = 0.0;
-               B[c2(3,i,j)] = 0.0;
+               r = x1;
+               r_in = X1[gc+2];
+
+               if(r > r_out)
+               {
+                  B[c2(0,i,j)] = density_0;
+                  B[c2(1,i,j)] = pressure_0;
+                  B[c2(2,i,j)] = velocity_0;
+                  B[c2(3,i,j)] = 0.0;
+               }
+               else if(r <= r_in)
+               {
+                  B[c2(0,i,j)] = density_0;
+                  B[c2(1,i,j)] = pressure_0;
+                  B[c2(2,i,j)] =  0.0;
+                  B[c2(3,i,j)] =  0.0;
+               }
             }
          }
       }

@@ -21,6 +21,15 @@ Nx3 = 0
 %x2min = -40.38
 %x3min = 0.0
 
+% Sph
+%x1max = 10.2
+%x2max = 3.141592
+%x3max = 0.0
+%x1min = 0.0
+%x2min = 0.0
+%x3min = 0.0
+
+% Cyl
 x1max = 10.2
 x2max = 10.2
 x3max = 0.0

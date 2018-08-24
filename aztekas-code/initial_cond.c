@@ -225,19 +225,38 @@ void SPH_ACC()
       {   
          for(j = 0; j <= Nx2; j++)
          {
-            x1 = X1[i];
-            x2 = X2[j];
-            r = sqrt(x1*x1 + x2*x2);
-
-            U[c2(0,i,j)] = density_0;
-            U[c2(1,i,j)] = pressure_0;
-            U[c2(2,i,j)] = 0.0;
-            U[c2(3,i,j)] = 0.0;
-
-            if(r > r_out)
+            if (alfa <= 1)
             {
-               U[c2(2,i,j)] = velocity_0*(x1/r);
-               U[c2(3,i,j)] = velocity_0*(x2/r);
+               x1 = X1[i];
+               x2 = X2[j];
+               r = sqrt(x1*x1 + x2*x2);
+
+               U[c2(0,i,j)] = density_0;
+               U[c2(1,i,j)] = pressure_0;
+               U[c2(2,i,j)] = 0.0;
+               U[c2(3,i,j)] = 0.0;
+
+               if(r > r_out)
+               {
+                  U[c2(2,i,j)] = velocity_0*(x1/r);
+                  U[c2(3,i,j)] = velocity_0*(x2/r);
+               }
+            }
+            else if (alfa == 2)
+            {
+               x1 = X1[i];
+               x2 = X2[j];
+               r = x1;
+
+               U[c2(0,i,j)] = density_0;
+               U[c2(1,i,j)] = pressure_0;
+               U[c2(2,i,j)] = 0.0;
+               U[c2(3,i,j)] = 0.0;
+
+               if(r > r_out)
+               {
+                  U[c2(2,i,j)] = velocity_0*(x1/r);
+               }
             }
          }
       }
