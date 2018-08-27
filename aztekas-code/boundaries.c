@@ -43,7 +43,16 @@ int BOUNDARIES(double *B)
       break;
 
       case 4: //Spherical accretion
-         REFLECTION(B,0,1,0,1,0,0);
+         // 0,1,0,1,0,0 for cyl 2D
+         // 0,1,0,0,0,0 for sph 2D
+         if(alfa <= 1)
+         {
+            REFLECTION(B,0,1,0,1,0,0);
+         }
+         else if(alfa == 2)
+         {
+            REFLECTION(B,0,1,0,0,0,0);
+         }
          IN_OUT_BOUND(B);
       break;
    }

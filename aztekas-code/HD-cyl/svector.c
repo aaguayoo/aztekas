@@ -29,11 +29,11 @@ int funct_S(double *a, double *uu)
       }
       else if(i == 2)
       {
-         a[i] = -(n*pow(u,2.0))/x1;
+         a[i] = (n*pow(w,2.0)-n*pow(u,2.0))/x1;
       }
       else if(i == 3)
       {
-         a[i] = -(n*u*v)/x1;
+         a[i] = -(n*u*w+n*u*v)/x1;
       }
       else if(i == 4)
       {

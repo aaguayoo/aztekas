@@ -27,14 +27,14 @@ int funct_U2Q(double *a, double *uu)
          x3 = 0.0;
 
          R = x1;
-         W = x1/sqrt(-(pow(w,2.0)+sin(x2)*pow(v,2.0)+pow(x1,2.0)*sin(x2)*pow(u,2.0)-pow(x1,2.0)*sin(x2))/sin(x2));
-         h = (K*p+(K-1)*n)/((K-1)*n);
+         W = (x1*fabs(sin(x2)))/sqrt(-((x1+2*MM)*pow(w,2.0)+(x1+2*MM)*pow(sin(x2),2.0)*pow(v,2.0)+pow(x1,3.0)*pow(sin(x2),2.0)*pow(u,2.0)+((-pow(x1,3.0))-2*MM*pow(x1,2.0))*pow(sin(x2),2.0))/(x1+2*MM));
+         h = 1;
 
-         lapse = 1;
-         dety  = pow(x1,2.0)*sqrt(sin(x2));
+         lapse = sqrt(x1)/sqrt(x1+2*MM);
+         dety  = pow(x1,3.0/2.0)*sqrt(x1+2*MM)*fabs(sin(x2));
 
          a[c1(0,i)] = W*n;
-         a[c1(1,i)] = (pow(W,2.0)*h-W)*n-p;
+         a[c1(1,i)] = (pow(W,2.0)*h-W)*n;
          a[c1(2,i)] = pow(W,2.0)*h*n*u;
          a[c1(3,i)] = pow(W,2.0)*h*n*v;
          a[c1(4,i)] = pow(W,2.0)*h*n*w;
@@ -57,14 +57,14 @@ int funct_U2Q(double *a, double *uu)
             x3 = 0.0;
 
             R = x1;
-            W = x1/sqrt(-(pow(w,2.0)+sin(x2)*pow(v,2.0)+pow(x1,2.0)*sin(x2)*pow(u,2.0)-pow(x1,2.0)*sin(x2))/sin(x2));
-            h = (K*p+(K-1)*n)/((K-1)*n);
+            W = (x1*fabs(sin(x2)))/sqrt(-((x1+2*MM)*pow(w,2.0)+(x1+2*MM)*pow(sin(x2),2.0)*pow(v,2.0)+pow(x1,3.0)*pow(sin(x2),2.0)*pow(u,2.0)+((-pow(x1,3.0))-2*MM*pow(x1,2.0))*pow(sin(x2),2.0))/(x1+2*MM));
+            h = 1;
 
-            lapse = 1;
-            dety  = pow(x1,2.0)*sqrt(sin(x2));
+            lapse = sqrt(x1)/sqrt(x1+2*MM);
+            dety  = pow(x1,3.0/2.0)*sqrt(x1+2*MM)*fabs(sin(x2));
 
             a[c2(0,i,j)] = W*n;
-            a[c2(1,i,j)] = (pow(W,2.0)*h-W)*n-p;
+            a[c2(1,i,j)] = (pow(W,2.0)*h-W)*n;
             a[c2(2,i,j)] = pow(W,2.0)*h*n*u;
             a[c2(3,i,j)] = pow(W,2.0)*h*n*v;
             a[c2(4,i,j)] = pow(W,2.0)*h*n*w;
@@ -90,14 +90,14 @@ int funct_U2Q(double *a, double *uu)
                x3 = X3[k];
 
                R = x1;
-               W = x1/sqrt(-(pow(w,2.0)+sin(x2)*pow(v,2.0)+pow(x1,2.0)*sin(x2)*pow(u,2.0)-pow(x1,2.0)*sin(x2))/sin(x2));
-               h = (K*p+(K-1)*n)/((K-1)*n);
+               W = (x1*fabs(sin(x2)))/sqrt(-((x1+2*MM)*pow(w,2.0)+(x1+2*MM)*pow(sin(x2),2.0)*pow(v,2.0)+pow(x1,3.0)*pow(sin(x2),2.0)*pow(u,2.0)+((-pow(x1,3.0))-2*MM*pow(x1,2.0))*pow(sin(x2),2.0))/(x1+2*MM));
+               h = 1;
 
-               lapse = 1;
-               dety  = 1;
+               lapse = sqrt(x1)/sqrt(x1+2*MM);
+               dety  = sqrt(x1)/sqrt(x1+2*MM);
 
                a[c3(0,i,j,k)] = W*n;
-               a[c3(1,i,j,k)] = (pow(W,2.0)*h-W)*n-p;
+               a[c3(1,i,j,k)] = (pow(W,2.0)*h-W)*n;
                a[c3(2,i,j,k)] = pow(W,2.0)*h*n*u;
                a[c3(3,i,j,k)] = pow(W,2.0)*h*n*v;
                a[c3(4,i,j,k)] = pow(W,2.0)*h*n*w;

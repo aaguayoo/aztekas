@@ -81,6 +81,26 @@ int read_parameters_file(char const *paramfile_name)
                restart_filecount = atoi(t_value);
             }
 
+            if(strcmp(t_key,"tmax")==0)
+            {
+               tmax = atof(t_value);
+            }
+
+            if(strcmp(t_key,"timefile")==0)
+            {
+               timefile = atof(t_value);
+            }
+
+            if(strcmp(t_key,"cou")==0)
+            {
+               cou = atof(t_value);
+            }
+
+            if(strcmp(t_key,"K")==0)
+            {
+               K = atof(t_value);
+            }
+
             if(strcmp(t_key,"Nx1")==0)
             {
                Nx1 = atoi(t_value);

@@ -19,23 +19,23 @@ int funct_H(double *a, double *uu)
    {
       if(i == 0)
       {
-         a[i] = g33*n*w;
+         a[i] = n*w;
       }
       else if(i == 1)
       {
-         a[i] = ((g33*K-g33)*n*pow(w,3.0)+((g33*K-g33)*n*pow(v,2.0)+(g33*K-g33)*n*pow(u,2.0)+2*g33*K*p)*w)/(2*K-2);
+         a[i] = ((K-1)*n*pow(w,3.0)+((K-1)*n*pow(v,2.0)+(K-1)*n*pow(u,2.0)+2*K*p)*w)/(2*K-2);
       }
       else if(i == 2)
       {
-         a[i] = g33*n*u*w;
+         a[i] = n*u*w;
       }
       else if(i == 3)
       {
-         a[i] = g33*n*v*w;
+         a[i] = n*v*w;
       }
       else if(i == 4)
       {
-         a[i] = g33*n*pow(w,2.0)+g33*p;
+         a[i] = n*pow(w,2.0)+p;
       }
    }
 

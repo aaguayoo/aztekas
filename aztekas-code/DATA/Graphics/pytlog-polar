@@ -52,12 +52,24 @@ levels = np.linspace(np.min(np.log10(n)),np.max(np.log10(n)),400)
 #levels = np.linspace(0.0,np.max(n),400)
 
 #Space between vectors
-qx = 10
+qx = 30
 qy = 10
 
 plt.subplot(projection='polar')
-plt.pcolormesh(Y,X,n)
-plt.colorbar(label='Density rho')
+plt.xticks([])
+plt.yticks(np.arange(0,3,step=2),[])
+plt.pcolormesh(Y,X,np.log10(n),cmap=plt.cm.YlOrBr)
+plt.pcolormesh(-Y,X,np.log10(n),cmap=plt.cm.YlOrBr)
+plt.colorbar(label=r'Density $\rho$')
+
+#uut= u/np.sqrt(u**2 + v**2)
+#vvt= v/np.sqrt(u**2 + v**2)
+#uu = np.nan_to_num(u)
+#vv = np.nan_to_num(v)
+#plt.quiver(Y[::qx,::qy],X[::qx,::qy],vv[::qx,::qy],uu[::qx,::qy],
+#		  units='width',scale=15.5,cmap='Reds')
+#plt.quiver(X[::qx,::qy],-Y[::qx,::qy],uu[::qx,::qy],-vv[::qx,::qy],
+#		  units='width',scale=5.5,cmap='Reds')
 
 plt.plot(yy,xx,ls='none')
 plt.grid()

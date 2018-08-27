@@ -19,23 +19,23 @@ int funct_F(double *a, double *uu)
    {
       if(i == 0)
       {
-         a[i] = g11*n*u;
+         a[i] = n*u;
       }
       else if(i == 1)
       {
-         a[i] = ((g11*K-g11)*n*u*pow(w,2.0)+(g11*K-g11)*n*u*pow(v,2.0)+(g11*K-g11)*n*pow(u,3.0)+2*g11*K*p*u)/(2*K-2);
+         a[i] = ((K-1)*n*u*pow(w,2.0)+(K-1)*n*u*pow(v,2.0)+(K-1)*n*pow(u,3.0)+2*K*p*u)/(2*K-2);
       }
       else if(i == 2)
       {
-         a[i] = g11*n*pow(u,2.0)+g11*p;
+         a[i] = n*pow(u,2.0)+p;
       }
       else if(i == 3)
       {
-         a[i] = g11*n*u*v;
+         a[i] = n*u*v;
       }
       else if(i == 4)
       {
-         a[i] = g11*n*u*w;
+         a[i] = n*u*w;
       }
    }
 

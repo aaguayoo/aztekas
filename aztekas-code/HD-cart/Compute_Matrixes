@@ -66,17 +66,17 @@ maxima<<EOF
 	ratsimp(Q[4,1]),ratsimp(Q[5,1]))$
 
 	/*Output the file VECTOR_F*/
-	F: g11*matrix([f1],[f2],[f3],[f4],[f5])$
+	F: matrix([f1],[f2],[f3],[f4],[f5])$
 	stringout("VECTOR_F",ratsimp(F[1,1]),ratsimp(F[2,1]),ratsimp(F[3,1]),
 	ratsimp(F[4,1]),ratsimp(F[5,1]))$
 
 	/*Output the file VECTOR_G*/
-	G: g22*matrix([g1],[g2],[g3],[g4],[g5])$
+	G: matrix([g1],[g2],[g3],[g4],[g5])$
 	stringout("VECTOR_G",ratsimp(G[1,1]),ratsimp(G[2,1]),ratsimp(G[3,1]),
 	ratsimp(G[4,1]),ratsimp(G[5,1]))$
 
 	/*Output the file VECTOR_H*/
-	H: g33*matrix([h1],[h2],[h3],[h4],[h5])$
+	H: matrix([h1],[h2],[h3],[h4],[h5])$
 	stringout("VECTOR_H",ratsimp(H[1,1]),ratsimp(H[2,1]),ratsimp(H[3,1]),
 	ratsimp(H[4,1]),ratsimp(H[5,1]))$
 

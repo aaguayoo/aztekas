@@ -11,7 +11,6 @@ int funct_H(double *a, double *uu)
    n = uu[0];
    p = uu[1];
    u = uu[2];
-   r = x1;
    if(dim >= 2){v = uu[3];}
    if(dim == 3){w = uu[4];}
     
@@ -19,23 +18,23 @@ int funct_H(double *a, double *uu)
    {
       if(i == 0)
       {
-         a[i] = n*(x1)*w;
+         a[i] = n*w;
       }
       else if(i == 1)
       {
-         a[i] = ((K-1)*n*(x1)*pow(w,3.0)+((K-1)*n*(x1)*pow(v,2.0)+(K-1)*n*(x1)*pow(u,2.0)+2*K*p*(x1))*w)/(2*K-2);
+         a[i] = ((K-1)*n*pow(w,3.0)+((K-1)*n*pow(v,2.0)+(K-1)*n*pow(u,2.0)+2*K*p)*w)/(2*K-2);
       }
       else if(i == 2)
       {
-         a[i] = n*(x1)*u*w;
+         a[i] = n*u*w;
       }
       else if(i == 3)
       {
-         a[i] = n*(x1)*v*w;
+         a[i] = n*v*w;
       }
       else if(i == 4)
       {
-         a[i] = n*(x1)*pow(w,2.0)+p*(x1);
+         a[i] = n*pow(w,2.0)+p;
       }
    }
 

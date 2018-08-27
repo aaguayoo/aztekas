@@ -13,8 +13,10 @@ double *X3p, *X3m;
 double x1, x2, x3;
 double dx1, dx2, dx3;
 double dt, time;
+double tmax, timefile, cou;
 
 double start, delta;
+double K;
 
 //Mesh
 int Nx1, Nx2, Nx3;

@@ -10,7 +10,6 @@ int funct_Do(double *a, double *uu)
    n = uu[0];
    p = uu[1];
    u = uu[2];
-   r = x1;
    if(dim >= 2){v = uu[3];}
    if(dim == 3){w = uu[4];}
     

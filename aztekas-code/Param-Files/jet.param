@@ -13,6 +13,7 @@ restart_filecount = 18
 %Nx1 = 576
 %Nx2 = 1920
 
+% Classical jet
 Nx1 = 100
 Nx2 = 400
 
@@ -23,6 +24,14 @@ x3max = 1.0
 x1min = 0.0
 x2min = 0.0
 x3min = 0.0
+
+% Time parameters
+tmax = 120.0
+timefile = 0.5
+cou = 0.5
+
+% Polytorpic index
+K = 1.6666666666666666666666666
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Initial conditions %%%%%%

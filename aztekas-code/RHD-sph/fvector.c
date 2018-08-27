@@ -17,14 +17,14 @@ int funct_F(double *a, double *uu)
    if(dim == 3){w = uu[4];}
 
    R = x1;
-   W = x1/sqrt(-(pow(w,2.0)+sin(x2)*pow(v,2.0)+pow(x1,2.0)*sin(x2)*pow(u,2.0)-pow(x1,2.0)*sin(x2))/sin(x2));
-   h = (K*p+(K-1)*n)/((K-1)*n);
+   W = (x1*fabs(sin(x2)))/sqrt(-((x1+2*MM)*pow(w,2.0)+(x1+2*MM)*pow(sin(x2),2.0)*pow(v,2.0)+pow(x1,3.0)*pow(sin(x2),2.0)*pow(u,2.0)+((-pow(x1,3.0))-2*MM*pow(x1,2.0))*pow(sin(x2),2.0))/(x1+2*MM));
+   h = 1;
 
-   a[0] = W*n*u;
-   a[1] = (pow(W,2.0)*h-W)*n*u;
-   a[2] = pow(W,2.0)*h*n*pow(u,2.0)+p;
-   a[3] = pow(W,2.0)*h*n*u*v;
-   a[4] = pow(W,2.0)*h*n*u*w;
+   a[0] = (W*n*pow(x1,3.0/2.0)*sqrt(x1+2*MM)*u-2*MM*W*n*x1-4*pow(MM,2.0)*W*n)/(sqrt(x1)*pow(2*MM+x1,1.5));
+   a[1] = ((pow(W,2.0)*h-W)*n*pow(x1,3.0/2.0)*sqrt(x1+2*MM)*u+(2*MM*W-2*MM*pow(W,2.0)*h)*n*x1+(4*pow(MM,2.0)*W-4*pow(MM,2.0)*pow(W,2.0)*h)*n)/(sqrt(x1)*pow(2*MM+x1,1.5));
+   a[2] = (pow(W,2.0)*h*n*pow(x1,3.0/2.0)*sqrt(x1+2*MM)*pow(u,2.0)+((-2*MM*pow(W,2.0)*h*n*x1)-4*pow(MM,2.0)*pow(W,2.0)*h*n)*u)/(sqrt(x1)*pow(2*MM+x1,1.5));
+   a[3] = (pow(W,2.0)*h*n*pow(x1,3.0/2.0)*sqrt(x1+2*MM)*u*v+((-2*MM*pow(W,2.0)*h*n*x1)-4*pow(MM,2.0)*pow(W,2.0)*h*n)*v)/(sqrt(x1)*pow(2*MM+x1,1.5));
+   a[4] = (pow(W,2.0)*h*n*pow(x1,3.0/2.0)*sqrt(x1+2*MM)*u*w+((-2*MM*pow(W,2.0)*h*n*x1)-4*pow(MM,2.0)*pow(W,2.0)*h*n)*w)/(sqrt(x1)*pow(2*MM+x1,1.5));
 
    return 0;
 }

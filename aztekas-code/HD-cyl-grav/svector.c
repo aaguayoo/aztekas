@@ -25,15 +25,15 @@ int funct_S(double *a, double *uu)
       }
       else if(i == 1)
       {
-         a[i] = -(x1*n*v*x2+((p+E)*pow(r,3.0)+pow(x1,2.0)*n)*u)/(x1*pow(r,3.0));
+         a[i] = -(x1*n*v*x2+(E*pow(r,3.0)+pow(x1,2.0)*n)*u)/(x1*pow(r,3.0));
       }
       else if(i == 2)
       {
-         a[i] = -(n*pow(r,3.0)*pow(u,2.0)+pow(x1,2.0)*n)/(x1*pow(r,3.0));
+         a[i] = (n*pow(r,3.0)*pow(w,2.0)-n*pow(r,3.0)*pow(u,2.0)-pow(x1,2.0)*n)/(x1*pow(r,3.0));
       }
       else if(i == 3)
       {
-         a[i] = -(x1*n*x2+n*pow(r,3.0)*u*v)/(x1*pow(r,3.0));
+         a[i] = -(x1*n*x2+n*pow(r,3.0)*u*w+n*pow(r,3.0)*u*v)/(x1*pow(r,3.0));
       }
       else if(i == 4)
       {

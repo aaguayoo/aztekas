@@ -17,11 +17,11 @@ int funct_Q(double *a, double *uu)
    if(dim == 3){w = uu[4];}
 
    R = x1;
-   W = x1/sqrt(-(pow(w,2.0)+sin(x2)*pow(v,2.0)+pow(x1,2.0)*sin(x2)*pow(u,2.0)-pow(x1,2.0)*sin(x2))/sin(x2));
-   h = (K*p+(K-1)*n)/((K-1)*n);
+   W = (x1*fabs(sin(x2)))/sqrt(-((x1+2*MM)*pow(w,2.0)+(x1+2*MM)*pow(sin(x2),2.0)*pow(v,2.0)+pow(x1,3.0)*pow(sin(x2),2.0)*pow(u,2.0)+((-pow(x1,3.0))-2*MM*pow(x1,2.0))*pow(sin(x2),2.0))/(x1+2*MM));
+   h = 1;
 
    a[0] = W*n;
-   a[1] = (pow(W,2.0)*h-W)*n-p;
+   a[1] = (pow(W,2.0)*h-W)*n;
    a[2] = pow(W,2.0)*h*n*u;
    a[3] = pow(W,2.0)*h*n*v;
    a[4] = pow(W,2.0)*h*n*w;

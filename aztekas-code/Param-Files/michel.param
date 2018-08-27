@@ -9,9 +9,9 @@ restart_filecount = 18
 
 % Define mesh
 
-Nx1 = 400
-Nx2 = 0
-Nx2 = 0
+Nx1 = 300
+Nx2 = 300
+Nx3 = 0
 
 % Define domain limits
 %x1max = 40.38
@@ -22,11 +22,19 @@ Nx2 = 0
 %x3min = 0.0
 
 x1max = 41.0
-x2max = 1.0 
-x3max = 1.0
-x1min = 0.2
+x2max = 3.141592 
+x3max = 0.0
+x1min = 0.0
 x2min = 0.0
 x3min = 0.0
+
+% Time parameters
+tmax = 300.0
+timefile = 1.0
+cou = 0.5
+
+% Polytorpic index
+K = 1.6666666666666666666666666
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Boundary conditions %%%%%

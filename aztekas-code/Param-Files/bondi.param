@@ -22,20 +22,28 @@ Nx3 = 0
 %x3min = 0.0
 
 % Sph
+x1max = 10.2
+x2max = 3.141592
+x3max = 0.0
+x1min = 0.0
+x2min = 0.0
+x3min = 0.0
+
+% Cyl
 %x1max = 10.2
-%x2max = 3.141592
+%x2max = 10.2
 %x3max = 0.0
 %x1min = 0.0
 %x2min = 0.0
 %x3min = 0.0
 
-% Cyl
-x1max = 10.2
-x2max = 10.2
-x3max = 0.0
-x1min = 0.0
-x2min = 0.0
-x3min = 0.0
+% Time parameters
+tmax = 300.0
+timefile = 1.0
+cou = 0.5
+
+% Polytorpic index
+K = 1.6666666666666666666666666
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Boundary conditions %%%%%
