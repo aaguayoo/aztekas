@@ -1,0 +1,57 @@
+% OUTPUT FILE AND DIRECTORY
+outputdirectory = ./d999/
+outputfile      = data_
+
+% DENSITY PROFILE
+% 1 = const., 2 = gaussian, 3 = step function
+rho_boundary = 3
+rho_atm = 0.999
+n_pow = 2
+
+extrapolation = 0
+
+% RESTART SIMULATION (1 -> true, 0 -> false)
+restart_simulation = 0
+restartfile = DATA/sph_acc/data_18.dat
+restart_filecount = 18
+
+% Time
+tmax = 1001.0
+timefile = 10.0
+
+% Hydro
+cou = 0.2
+%K = 1.66666666666666666
+%K = 1.33333333333333333
+K = 1.00000000001
+
+% Define mesh
+
+Nx1 = 120
+Nx2 = 120
+Nx3 = 0
+
+% Sph
+x1max = 10.0
+x2max = 0.5
+x3max = 0.0
+x1min = 0.3
+x2min = 0.0
+x3min = 0.0
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Boundary conditions %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ACCRETION DOMAIN
+r_out = 10.0
+r_in = 0.1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Initial conditions %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% BONDI ACCRETION (Gamma = 1, r0 = 10 r_B)
+density_0 =  1.1051141
+pressure_0 = 1.1051141
+velocity_0 = -0.0101385

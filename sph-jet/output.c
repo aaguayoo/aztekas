@@ -110,7 +110,7 @@ int Output2(int *itprint)
    fprintf(file,"%d \n",Nx2-2*gc+1);
    fprintf(file,"###################################\n");
 
-   for(i = gc; i <= Nx1-gc; i++)
+   for(i = 0; i <= Nx1; i++)
 	 {
       for(j = gc; j <= Nx2-gc; j++)
       {

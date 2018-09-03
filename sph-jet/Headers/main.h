@@ -18,6 +18,8 @@ double tmax, timefile, cou;
 double start, delta;
 double K;
 
+int extrapolation;
+
 //Mesh
 int Nx1, Nx2, Nx3;
 
@@ -43,8 +45,8 @@ double rho_atm, n_pow;
 double density_0, pressure_0, velocity_0;
 
 //Paramfile
-char paramfile_name[50], outputdirectory[50], outputfile[50];
-char restartfile[50];
+char paramfile_name[150], outputdirectory[150], outputfile[150];
+char restartfile[150];
 int read_parameters_file(char const *paramfile_name);
 int restart_simulation, restart_filecount;
 

@@ -124,11 +124,13 @@ int read_parameters_file(char const *paramfile_name)
             if(strcmp(t_key,"x2max")==0)
             {
                x2max = atof(t_value);
+               if (alfa == 2) x2max=x2max*M_PI;
             }
 
             if(strcmp(t_key,"x3max")==0)
             {
                x3max = atof(t_value);
+               if (alfa == 2) x3max=x3max*M_PI;               
             }
 
             if(strcmp(t_key,"x1min")==0)
@@ -139,11 +141,13 @@ int read_parameters_file(char const *paramfile_name)
             if(strcmp(t_key,"x2min")==0)
             {
                x2min = atof(t_value);
+               if (alfa == 2) x2min=x2min*M_PI;               
             }
 
             if(strcmp(t_key,"x3min")==0)
             {
                x3min = atof(t_value);
+               if (alfa == 2) x3min=x3min*M_PI;               
             }
 
             if(strcmp(t_key,"r_out")==0)
@@ -300,6 +304,11 @@ int read_parameters_file(char const *paramfile_name)
             {
                z_jet = atof(t_value);
             }
+
+            if(strcmp(t_key,"extrapolation")==0)
+            {
+               extrapolation = atoi(t_value);
+            }            
          }
       }
             

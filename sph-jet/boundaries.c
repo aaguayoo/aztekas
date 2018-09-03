@@ -51,7 +51,7 @@ int BOUNDARIES(double *B)
          }
          else if(alfa == 2)
          {
-            REFLECTION(B,0,1,0,0,0,0);
+            REFLECTION(B,0,1,1,0,0,0);
          }
          IN_OUT_BOUND(B);
       break;
